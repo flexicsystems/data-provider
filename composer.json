@@ -1,0 +1,43 @@
+{
+  "name": "flexic/data-provider",
+  "description": "Provides generic data providers for use with phpunit/phpunit.",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "phpunit",
+    "data-provider"
+  ],
+  "authors": [
+    {
+      "name": "Andreas Möller",
+      "email": "am@localheinz.com"
+    },
+    {
+      "name": "Hendrik Legge",
+        "email": "hendrik.legge@themepoint.de"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "fakerphp/faker": "^1.19.0",
+    "ergebnis/data-provider": "^1.2.0"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "Flexic\\DataProvider\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Flexic\\DataProvider\\Test\\": "test/"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.26"
+    },
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
