@@ -11,9 +11,9 @@ class EmailProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('email', $faker, 'email')
-        );
+        yield from self::provideDataForValues([
+            'email' => $faker->email(),
+        ]);
     }
 
     /**
@@ -23,9 +23,9 @@ class EmailProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('safe-email', $faker, 'safeEmail')
-        );
+        yield from self::provideDataForValues([
+            'safe-email' => $faker->safeEmail(),
+        ]);
     }
 
     /**
@@ -35,9 +35,9 @@ class EmailProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('free-email', $faker, 'freeEmail')
-        );
+        yield from self::provideDataForValues([
+            'free-email' => $faker->freeEmail(),
+        ]);
     }
 
     /**
@@ -47,8 +47,8 @@ class EmailProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('company-email', $faker, 'companyEmail')
-        );
+        yield from self::provideDataForValues([
+            'company-email' => $faker->companyEmail(),
+        ]);
     }
 }

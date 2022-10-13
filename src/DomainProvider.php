@@ -24,9 +24,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain', $faker, 'domain')
-        );
+        yield from self::provideDataForValues([
+            'domain' => $faker->domainName(),
+        ]);
     }
 
     /**
@@ -36,9 +36,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-tld', $faker, 'tld')
-        );
+        yield from self::provideDataForValues([
+            'domain-tld' => $faker->tld(),
+        ]);
     }
 
     /**
@@ -48,9 +48,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-word', $faker, 'domainWord')
-        );
+        yield from self::provideDataForValues([
+            'domain-word' => $faker->domainWord(),
+        ]);
     }
 
     /**
@@ -60,9 +60,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-url', $faker, 'url')
-        );
+        yield from self::provideDataForValues([
+            'domain-url' => $faker->url(),
+        ]);
     }
 
     /**
@@ -72,9 +72,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-slug', $faker, 'slug')
-        );
+        yield from self::provideDataForValues([
+            'domain-slug' => $faker->slug(),
+        ]);
     }
 
     /**
@@ -84,9 +84,9 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-free-email', $faker, 'freeEmailDomain')
-        );
+        yield from self::provideDataForValues([
+            'domain-free-email' => $faker->freeEmailDomain(),
+        ]);
     }
 
     /**
@@ -96,8 +96,8 @@ class DomainProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('domain-safe-email', $faker, 'safeEmailDomain')
-        );
+        yield from self::provideDataForValues([
+            'domain-safe-email' => $faker->safeEmailDomain(),
+        ]);
     }
 }

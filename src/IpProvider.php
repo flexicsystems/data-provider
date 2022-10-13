@@ -11,9 +11,9 @@ class IpProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('ip-v4', $faker, 'ipv4')
-        );
+        yield from self::provideDataForValues([
+            'ip-v4' => $faker->ipv4(),
+        ]);
     }
 
     /**
@@ -23,9 +23,9 @@ class IpProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('local-ip-v4', $faker, 'localIpv4')
-        );
+        yield from self::provideDataForValues([
+            'local-ip-v4' => $faker->localIpv4(),
+        ]);
     }
 
     /**
@@ -35,9 +35,9 @@ class IpProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('ip-v6', $faker, 'ipv6')
-        );
+        yield from self::provideDataForValues([
+            'ip-v6' => $faker->ipv6(),
+        ]);
     }
 
     /**
@@ -47,8 +47,8 @@ class IpProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('mac-address', $faker, 'macAddress')
-        );
+        yield from self::provideDataForValues([
+            'mac-address' => $faker->macAddress(),
+        ]);
     }
 }

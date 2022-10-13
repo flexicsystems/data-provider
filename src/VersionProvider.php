@@ -11,9 +11,9 @@ class VersionProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('semver', $faker, 'semver')
-        );
+        yield from self::provideDataForValues([
+            'version' => $faker->semver(false, false),
+        ]);
     }
 
     /**
@@ -23,9 +23,9 @@ class VersionProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('version-pre-release', $faker, 'semver', [true, false])
-        );
+        yield from self::provideDataForValues([
+            'version-pre-release' => $faker->semver(true, false)
+        ]);
     }
 
     /**
@@ -35,9 +35,9 @@ class VersionProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('version-build', $faker, 'semver', [false, true])
-        );
+        yield from self::provideDataForValues([
+            'version-build' => $faker->semver(false, true)
+        ]);
     }
 
     /**
@@ -47,9 +47,9 @@ class VersionProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(
-            self::values('version-build', $faker, 'semver', [true, true])
-        );
+        yield from self::provideDataForValues([
+            'version-pre-release-build' => $faker->semver(true, true)
+        ]);
     }
 
 
