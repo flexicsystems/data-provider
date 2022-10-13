@@ -10,55 +10,57 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace Flexic\DataProvider;
+namespace Flexic\DataProvider\Internet;
 
-final class IpProvider extends AbstractProvider
+use Flexic\DataProvider\AbstractProvider;
+
+final class EmailProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function ipv4(): \Generator
+    public static function email(): \Generator
     {
         $faker = self::faker();
 
         yield from self::provideDataForValues([
-            'ip-v4' => $faker->ipv4(),
+            'email' => $faker->email(),
         ]);
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function localIpv4(): \Generator
+    public static function safeEmail(): \Generator
     {
         $faker = self::faker();
 
         yield from self::provideDataForValues([
-            'local-ip-v4' => $faker->localIpv4(),
+            'safe-email' => $faker->safeEmail(),
         ]);
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function ipv6(): \Generator
+    public static function freeEmail(): \Generator
     {
         $faker = self::faker();
 
         yield from self::provideDataForValues([
-            'ip-v6' => $faker->ipv6(),
+            'free-email' => $faker->freeEmail(),
         ]);
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function macAddress(): \Generator
+    public static function companyEmail(): \Generator
     {
         $faker = self::faker();
 
         yield from self::provideDataForValues([
-            'mac-address' => $faker->macAddress(),
+            'company-email' => $faker->companyEmail(),
         ]);
     }
 }
