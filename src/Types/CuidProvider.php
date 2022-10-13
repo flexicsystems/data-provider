@@ -19,7 +19,7 @@ final class CuidProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function cuid(): \Generator
+    public static function long(): \Generator
     {
         yield from self::provideDataForValues([
             'cuid' => \EndyJasmi\Cuid::cuid(),

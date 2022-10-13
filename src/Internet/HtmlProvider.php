@@ -19,7 +19,7 @@ final class HtmlProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function html(): \Generator
+    public static function normal(): \Generator
     {
         $faker = self::faker();
 
