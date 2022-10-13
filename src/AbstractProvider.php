@@ -12,6 +12,6 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider;
 
-final class AbstractProvider extends \Ergebnis\DataProvider\AbstractProvider
+abstract class AbstractProvider extends \Ergebnis\DataProvider\AbstractProvider
 {
 }

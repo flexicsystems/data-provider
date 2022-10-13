@@ -19,8 +19,10 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0",
+    "endyjasmi/cuid": "^2.1.0",
+    "ergebnis/data-provider": "^1.2.0",
     "fakerphp/faker": "^1.19.0",
-    "ergebnis/data-provider": "^1.2.0"
+    "symfony/uid": "^5.4"
   },
   "require-dev": {
     "ergebnis/php-cs-fixer-config": "^4.9.0",
