@@ -1,8 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider;
 
-class IpProvider extends AbstractProvider
+final class IpProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
