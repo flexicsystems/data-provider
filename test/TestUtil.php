@@ -18,4 +18,11 @@ final class TestUtil
     {
         return $generator->current()[0];
     }
+
+    public static function array(\Generator $generator): array
+    {
+        return \array_map(static function(array $input) {
+            return $input[0];
+        }, $generator->current());
+    }
 }

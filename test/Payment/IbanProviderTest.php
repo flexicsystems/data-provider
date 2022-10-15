@@ -12,15 +12,15 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\Test\Payment;
 
+use Flexic\DataProvider\Test\AbstractTestCase;
 use Flexic\DataProvider\Test\TestUtil;
-use PHPUnit\Framework;
 
 /**
  * @internal
  *
  * @covers \Flexic\DataProvider\Payment\IbanProvider
  */
-final class IbanProviderTest extends Framework\TestCase
+final class IbanProviderTest extends AbstractTestCase
 {
     public function testArbitraryProvidesString(): void
     {
