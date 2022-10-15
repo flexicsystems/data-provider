@@ -11,7 +11,7 @@ class CreditCardTypeProvider extends AbstractProvider
      */
     public static function type(): \Generator
     {
-        yield from self::provideDataForValues(self::values());
+        yield from self::provideMultipleDataForValues(self::values());
     }
 
     /**
