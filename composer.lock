@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5c595c1b8ab713a23048a26131558a0",
+    "content-hash": "111f059c30792c18c61f5e94bac26bcc",
     "packages": [
         {
             "name": "endyjasmi/cuid",
@@ -4335,5 +4335,5 @@
     "platform-overrides": {
         "php": "7.4.26"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
