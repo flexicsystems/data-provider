@@ -21,7 +21,7 @@ final class CurrencyProvider extends AbstractProvider
      */
     public static function currency(): \Generator
     {
-        yield from self::provideMultipleDataForValues(self::values()['currency']);
+        yield from self::provideMultipleDataForValues(self::values()['currencies']);
     }
 
     /**
@@ -30,7 +30,7 @@ final class CurrencyProvider extends AbstractProvider
     public static function currencyCode(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'currency' === $key;
+            return 'currency-code' === $key;
         });
     }
 
