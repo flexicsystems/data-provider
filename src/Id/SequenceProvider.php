@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Flexic\DataProvider\Id;
 
 use Flexic\DataProvider\AbstractProvider;
-use Symfony\Component\Uid;
 
 final class SequenceProvider extends AbstractProvider
 {
@@ -23,7 +22,7 @@ final class SequenceProvider extends AbstractProvider
     public static function short(): \Generator
     {
         yield from self::provideMultipleDataForValues(
-            self::values(10)
+            self::values(10),
         );
     }
 
@@ -33,7 +32,7 @@ final class SequenceProvider extends AbstractProvider
     public static function long(): \Generator
     {
         yield from self::provideMultipleDataForValues(
-            self::values(1000)
+            self::values(1000),
         );
     }
 
@@ -43,7 +42,7 @@ final class SequenceProvider extends AbstractProvider
     public static function extraLong(): \Generator
     {
         yield from self::provideMultipleDataForValues(
-            self::values(100000)
+            self::values(100000),
         );
     }
 
@@ -54,7 +53,7 @@ final class SequenceProvider extends AbstractProvider
 
         while ($i <= $max) {
             $values[\sprintf('sequence-%s', $i)] = $i;
-            $i++;
+            ++$i;
         }
 
         return $values;
