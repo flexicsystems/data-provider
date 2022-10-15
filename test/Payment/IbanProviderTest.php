@@ -12,44 +12,36 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\Test\Payment;
 
-use PHPUnit\Framework;
+use Flexic\DataProvider\Test\AbstractTestCase;
+use Flexic\DataProvider\Test\TestUtil;
 
 /**
  * @internal
  *
  * @covers \Flexic\DataProvider\Payment\IbanProvider
  */
-final class IbanProviderTest extends Framework\TestCase
+final class IbanProviderTest extends AbstractTestCase
 {
-    /**
-     * @dataProvider \Flexic\DataProvider\Payment\IbanProvider::arbitrary()
-     *
-     * @param mixed $value
-     */
-    public function testArbitraryProvidesString($value): void
+    public function testArbitraryProvidesString(): void
     {
+        $value = TestUtil::string(\Flexic\DataProvider\Payment\IbanProvider::arbitrary());
         self::assertIsString($value);
+        self::assertMatchesRegularExpression('/[A-Z]{2}[0-9]+/', $value);
     }
 
-    /**
-     * @dataProvider \Flexic\DataProvider\Payment\IbanProvider::invalid()
-     *
-     * @param mixed $value
-     */
-    public function testInvalidProvidesInvalidIban($value): void
+    public function testInvalidProvidesInvalidIban(): void
     {
-        self::assertTrue(\mb_strlen($value) <= 22);
-        self::assertSame(\mb_strpos($value, 'US'), 0);
+        $value = TestUtil::string(\Flexic\DataProvider\Payment\IbanProvider::invalid());
+        self::assertNotEmpty($value);
+        self::assertLessThanOrEqual(34, \mb_strlen($value));
+        self::assertStringStartsWith('US', $value);
     }
 
-    /**
-     * @dataProvider \Flexic\DataProvider\Payment\IbanProvider::valid()
-     *
-     * @param mixed $value
-     */
-    public function testValidProvidesValidIban($value): void
+    public function testValidProvidesValidIban(): void
     {
-        self::assertSame(\mb_strlen($value), 22);
-        self::assertNotSame(\mb_strpos($value, 'US'), 0);
+        $value = TestUtil::string(\Flexic\DataProvider\Payment\IbanProvider::valid());
+        self::assertNotEmpty($value);
+        self::assertLessThanOrEqual(34, \mb_strlen($value));
+        self::assertStringStartsNotWith('US', $value);
     }
 }
