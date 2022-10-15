@@ -10,9 +10,7 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace Flexic\DataProvider\Internet;
-
-use Flexic\DataProvider\AbstractProvider;
+namespace Flexic\DataProvider;
 
 final class VersionProvider extends AbstractProvider
 {
