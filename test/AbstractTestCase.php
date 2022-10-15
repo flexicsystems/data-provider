@@ -21,7 +21,7 @@ use PHPUnit\Framework\Constraint\RegularExpression;
  *
  * @coversNothing
  */
-final class AbstractTestCase extends Framework\TestCase
+abstract class AbstractTestCase extends Framework\TestCase
 {
     public static function assertStringIsUppercase($actual, string $message = ''): void
     {
