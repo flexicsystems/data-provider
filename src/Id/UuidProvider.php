@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace Flexic\DataProvider\Types;
+namespace Flexic\DataProvider\Id;
 
 use Flexic\DataProvider\AbstractProvider;
 use Symfony\Component\Uid;
