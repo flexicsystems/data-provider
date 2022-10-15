@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Payment;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class CreditCardNumberProvider extends AbstractProvider
+final class CreditCardNumberProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -12,7 +22,7 @@ class CreditCardNumberProvider extends AbstractProvider
     public static function visa(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'number-visa';
+            return 'number-visa' === $key;
         });
     }
 
@@ -22,7 +32,7 @@ class CreditCardNumberProvider extends AbstractProvider
     public static function visaFormatted(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'number-visa-formatted';
+            return 'number-visa-formatted' === $key;
         });
     }
 
@@ -32,7 +42,7 @@ class CreditCardNumberProvider extends AbstractProvider
     public static function masterCard(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'number-mastercard';
+            return 'number-mastercard' === $key;
         });
     }
 
@@ -42,7 +52,7 @@ class CreditCardNumberProvider extends AbstractProvider
     public static function masterCardFormatted(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'number-mastercard-formatted';
+            return 'number-mastercard-formatted' === $key;
         });
     }
 
@@ -52,7 +62,7 @@ class CreditCardNumberProvider extends AbstractProvider
     public static function number(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'number';
+            return 'number' === $key;
         });
     }
 

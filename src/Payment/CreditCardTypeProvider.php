@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Payment;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class CreditCardTypeProvider extends AbstractProvider
+final class CreditCardTypeProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -30,7 +40,7 @@ class CreditCardTypeProvider extends AbstractProvider
             'type-accel' => 'Accel',
             'type-interac' => 'Interac',
             'type-pulse' => 'PULSE',
-            'type-jcb' => 'JCB'
+            'type-jcb' => 'JCB',
         ];
     }
 }
