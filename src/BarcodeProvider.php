@@ -1,8 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider;
 
-class BarcodeProvider extends AbstractProvider
+final class BarcodeProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -10,7 +20,7 @@ class BarcodeProvider extends AbstractProvider
     public static function ean13(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'barcode-ean-13';
+            return 'barcode-ean-13' === $key;
         });
     }
 
@@ -20,7 +30,7 @@ class BarcodeProvider extends AbstractProvider
     public static function ean8(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'barcode-ean-8';
+            return 'barcode-ean-8' === $key;
         });
     }
 
@@ -30,7 +40,7 @@ class BarcodeProvider extends AbstractProvider
     public static function isbn10(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'barcode-isbn-10';
+            return 'barcode-isbn-10' === $key;
         });
     }
 
@@ -40,7 +50,7 @@ class BarcodeProvider extends AbstractProvider
     public static function isbn13(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'barcode-isbn-13';
+            return 'barcode-isbn-13' === $key;
         });
     }
 

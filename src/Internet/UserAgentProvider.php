@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Internet;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class UserAgentProvider extends AbstractProvider
+final class UserAgentProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -12,7 +22,7 @@ class UserAgentProvider extends AbstractProvider
     public static function random(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-random';
+            return 'user-agent-random' === $key;
         });
     }
 
@@ -22,7 +32,7 @@ class UserAgentProvider extends AbstractProvider
     public static function chrome(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-chrome';
+            return 'user-agent-chrome' === $key;
         });
     }
 
@@ -32,7 +42,7 @@ class UserAgentProvider extends AbstractProvider
     public static function firefox(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-firefox';
+            return 'user-agent-firefox' === $key;
         });
     }
 
@@ -42,7 +52,7 @@ class UserAgentProvider extends AbstractProvider
     public static function safari(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-safari';
+            return 'user-agent-safari' === $key;
         });
     }
 
@@ -52,7 +62,7 @@ class UserAgentProvider extends AbstractProvider
     public static function opera(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-opera';
+            return 'user-agent-opera' === $key;
         });
     }
 
@@ -62,7 +72,7 @@ class UserAgentProvider extends AbstractProvider
     public static function internetExplorer(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-internet-explorer';
+            return 'user-agent-internet-explorer' === $key;
         });
     }
 
@@ -72,7 +82,7 @@ class UserAgentProvider extends AbstractProvider
     public static function msedge(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'user-agent-msedge';
+            return 'user-agent-msedge' === $key;
         });
     }
 
