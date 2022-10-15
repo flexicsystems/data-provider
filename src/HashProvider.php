@@ -397,6 +397,7 @@ final class HashProvider extends AbstractProvider
     public static function values(): array
     {
         $faker = self::faker();
+
         return [
             'hash-md2' => \hash('md2', $faker->text()),
             'hash-md4' => \hash('md4', $faker->text()),
