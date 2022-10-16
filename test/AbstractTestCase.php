@@ -56,7 +56,7 @@ abstract class AbstractTestCase extends Framework\TestCase
 
         while ($i <= $end) {
             self::assertArrayHasKey($i, $actual);
-            $i++;
+            ++$i;
         }
     }
 }
