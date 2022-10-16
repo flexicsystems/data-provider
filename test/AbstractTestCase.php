@@ -49,4 +49,14 @@ abstract class AbstractTestCase extends Framework\TestCase
             $message,
         );
     }
+
+    public static function assertArrayHasKeyBetween(int $start, int $end, array $actual): void
+    {
+        $i = $start;
+
+        while ($i <= $end) {
+            self::assertArrayHasKey($i, $actual);
+            ++$i;
+        }
+    }
 }
