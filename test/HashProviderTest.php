@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Test;
 
 /**
@@ -7,7 +17,7 @@ namespace Flexic\DataProvider\Test;
  *
  * @covers \Flexic\DataProvider\HashProvider
  */
-class HashProviderTest extends AbstractTestCase
+final class HashProviderTest extends AbstractTestCase
 {
     public function testIfMd2IsValid(): void
     {
