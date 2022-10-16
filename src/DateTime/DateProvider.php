@@ -4,95 +4,95 @@ namespace Flexic\DataProvider\DateTime;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class TimestampProvider extends AbstractProvider
+class DateProvider extends AbstractProvider
 {
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function current(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-current' === $key;
+            return 'date-current' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function veryNearFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-very-near-future' === $key;
+            return 'date-very-near-future' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function nearFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-near-future' === $key;
+            return 'date-near-future' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function future(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-future' === $key;
+            return 'date-future' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function farFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-far-future' === $key;
+            return 'date-far-future' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function veryNearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-very-near-history' === $key;
+            return 'date-very-near-history' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function nearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-near-history' === $key;
+            return 'date-near-history' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function history(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-history' === $key;
+            return 'date-history' === $key;
         });
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function farHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-far-history' === $key;
+            return 'date-far-history' === $key;
         });
     }
 
@@ -101,15 +101,15 @@ class TimestampProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'iso8601-current' => $faker->unixTime('now'),
-            'iso8601-very-near-future' => $faker->unixTime('+15 minutes'),
-            'iso8601-near-future' => $faker->unixTime('+1 week'),
-            'iso8601-future' => $faker->unixTime('+1 year'),
-            'iso8601-far-future' => $faker->unixTime('+10 years'),
-            'iso8601-very-near-history' => $faker->unixTime('-15 minutes'),
-            'iso8601-near-history' => $faker->unixTime('-1 week'),
-            'iso8601-history' => $faker->unixTime('-1 year'),
-            'iso8601-far-history' => $faker->unixTime('-10 years'),
+            'date-current' => $faker->date('now'),
+            'date-very-near-future' => $faker->date('+15 minutes'),
+            'date-near-future' => $faker->date('+1 week'),
+            'date-future' => $faker->date('+1 year'),
+            'date-far-future' => $faker->date('+10 years'),
+            'date-very-near-history' => $faker->date('-15 minutes'),
+            'date-near-history' => $faker->date('-1 week'),
+            'date-history' => $faker->date('-1 year'),
+            'date-far-history' => $faker->date('-10 years'),
         ];
     }
 }

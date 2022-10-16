@@ -4,10 +4,10 @@ namespace Flexic\DataProvider\DateTime;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class TimestampProvider extends AbstractProvider
+class Iso8601Provider extends AbstractProvider
 {
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function current(): \Generator
     {
@@ -17,7 +17,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function veryNearFuture(): \Generator
     {
@@ -27,7 +27,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function nearFuture(): \Generator
     {
@@ -37,7 +37,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function future(): \Generator
     {
@@ -47,7 +47,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function farFuture(): \Generator
     {
@@ -57,7 +57,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function veryNearHistory(): \Generator
     {
@@ -67,7 +67,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function nearHistory(): \Generator
     {
@@ -77,7 +77,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function history(): \Generator
     {
@@ -87,7 +87,7 @@ class TimestampProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: int}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function farHistory(): \Generator
     {
@@ -101,15 +101,15 @@ class TimestampProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'iso8601-current' => $faker->unixTime('now'),
-            'iso8601-very-near-future' => $faker->unixTime('+15 minutes'),
-            'iso8601-near-future' => $faker->unixTime('+1 week'),
-            'iso8601-future' => $faker->unixTime('+1 year'),
-            'iso8601-far-future' => $faker->unixTime('+10 years'),
-            'iso8601-very-near-history' => $faker->unixTime('-15 minutes'),
-            'iso8601-near-history' => $faker->unixTime('-1 week'),
-            'iso8601-history' => $faker->unixTime('-1 year'),
-            'iso8601-far-history' => $faker->unixTime('-10 years'),
+            'iso8601-current' => $faker->iso8601('now'),
+            'iso8601-very-near-future' => $faker->iso8601('+15 minutes'),
+            'iso8601-near-future' => $faker->iso8601('+1 week'),
+            'iso8601-future' => $faker->iso8601('+1 year'),
+            'iso8601-far-future' => $faker->iso8601('+10 years'),
+            'iso8601-very-near-history' => $faker->iso8601('-15 minutes'),
+            'iso8601-near-history' => $faker->iso8601('-1 week'),
+            'iso8601-history' => $faker->iso8601('-1 year'),
+            'iso8601-far-history' => $faker->iso8601('-10 years'),
         ];
     }
 }

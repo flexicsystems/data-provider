@@ -37,13 +37,13 @@ final class VersionProviderTest extends AbstractTestCase
     {
         $value = TestUtil::string(\Flexic\DataProvider\VersionProvider::build());
 
-        self::assertMatchesRegularExpression('/^[0-9]+\.[0-9]+\.[0-9]+$/', $value);
+        self::assertMatchesRegularExpression('/^[0-9]+\.[0-9]+\.[0-9]+([+-][a-zA-Z0-9.-]+)?$/', $value);
     }
 
     public function testPreReleaseBuildIsValid(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\VersionProvider::preReleaseBuild());
 
-        self::assertMatchesRegularExpression('/^[0-9]+\.[0-9]+\.[0-9]+\+[a-zA-Z0-9.-]+$/', $value);
+        self::assertMatchesRegularExpression('/^[0-9]+\.[0-9]+\.[0-9]+([+-][a-zA-Z0-9.-]+)?([+-][a-zA-Z0-9.-]+)?$/', $value);
     }
 }
