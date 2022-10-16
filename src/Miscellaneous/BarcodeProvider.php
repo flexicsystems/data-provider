@@ -10,7 +10,9 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace Flexic\DataProvider;
+namespace Flexic\DataProvider\Miscellaneous;
+
+use Flexic\DataProvider\AbstractProvider;
 
 final class BarcodeProvider extends AbstractProvider
 {
