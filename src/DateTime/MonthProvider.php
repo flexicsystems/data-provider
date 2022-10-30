@@ -16,9 +16,6 @@ use Flexic\DataProvider\AbstractProvider;
 
 final class MonthProvider extends AbstractProvider
 {
-    /**
-     * @return \Generator<string, array{0: string}>
-     */
     public static function arbitrary(): \Generator
     {
         yield from self::provideDataForValues(self::values());
@@ -27,18 +24,18 @@ final class MonthProvider extends AbstractProvider
     public static function values(): array
     {
         return [
-            'january' => 'January',
-            'february' => 'February',
-            'march' => 'March',
-            'april' => 'April',
-            'may' => 'May',
-            'june' => 'June',
-            'july' => 'July',
-            'august' => 'August',
-            'september' => 'September',
-            'october' => 'October',
-            'november' => 'November',
-            'december' => 'December',
+            'january' => 1,
+            'february' => 2,
+            'march' => 3,
+            'april' => 4,
+            'may' => 5,
+            'june' => 6,
+            'july' => 7,
+            'august' => 8,
+            'september' => 9,
+            'october' => 10,
+            'november' => 11,
+            'december' => 12,
         ];
     }
 }

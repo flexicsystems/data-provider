@@ -24,9 +24,11 @@ final class MonthProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\MonthProvider::arbitrary());
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\MonthProvider::arbitrary());
 
-        self::assertIsString($value);
+        self::assertIsInt($value);
         self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
+        self::assertGreaterThanOrEqual(1, $value);
+        self::assertLessThanOrEqual(12, $value);
     }
 }
