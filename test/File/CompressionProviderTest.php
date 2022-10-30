@@ -27,8 +27,8 @@ final class CompressionProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\CompressionProvider::arbitrary());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
-        self::assertLessThanOrEqual(5, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
     }
 }

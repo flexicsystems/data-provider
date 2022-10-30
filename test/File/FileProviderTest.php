@@ -27,7 +27,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::arbitrary());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -37,7 +37,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::arbitraryCompressed());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -47,7 +47,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::audio());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -57,7 +57,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::image());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -67,7 +67,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::video());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -77,7 +77,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::document());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -87,7 +87,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::spreadsheet());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -97,7 +97,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::presentation());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -107,7 +107,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::archive());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -117,7 +117,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::code());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -127,7 +127,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::executable());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -137,7 +137,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::font());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -147,7 +147,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::system());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -157,7 +157,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::database());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -167,7 +167,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::model());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
@@ -177,7 +177,7 @@ final class FileProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\File\FileProvider::message());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
         self::assertStringStartsNotWith('.', $value);
         self::assertMatchesRegularExpression('/^(([a-zA-Z0-9_-]+).([a-zA-Z0-9]+))$/', $value);
     }
