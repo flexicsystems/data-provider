@@ -28,8 +28,8 @@ final class TldProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z]/', $value);
     }
 }

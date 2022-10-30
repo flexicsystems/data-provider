@@ -28,8 +28,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -39,8 +39,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -50,8 +50,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -61,8 +61,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -72,8 +72,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -83,8 +83,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(2, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(2, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 
@@ -94,8 +94,8 @@ final class ProtocolProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertLessThanOrEqual(5, \strlen($value));
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[a-zA-Z0-9]/', $value);
     }
 }
