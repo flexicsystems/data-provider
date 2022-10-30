@@ -57,7 +57,10 @@ final class UuidProvider extends AbstractProvider
         $faker = self::faker();
 
         yield from self::provideDataForValues([
-            'uuid-v5' => (new Uid\UuidV5($faker->uuid))->toRfc4122(),
+            'uuid-v5' => (Uid\Uuid::v5(
+                Uid\Uuid::v4(),
+                $faker->domainWord
+            ))->toRfc4122(),
         ]);
     }
 
