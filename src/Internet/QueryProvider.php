@@ -84,7 +84,6 @@ final class QueryProvider extends AbstractProvider
         });
     }
 
-
     public static function values(): array
     {
         return [
@@ -102,7 +101,7 @@ final class QueryProvider extends AbstractProvider
         $faker = self::faker();
         $query = [];
 
-        for ($i = 0; $i < $numberOfParameters; $i++) {
+        for ($i = 0; $i < $numberOfParameters; ++$i) {
             $query[] = \sprintf('%s=%s', $faker->word(), $faker->word());
         }
 

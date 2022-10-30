@@ -100,7 +100,7 @@ final class UrlProvider extends AbstractProvider
 
     public static function values(
         bool $suffix = false,
-        bool $queryParameter = false
+        bool $queryParameter = false,
     ): array {
         return [
             'url-short' => self::random(1, $suffix, $queryParameter),
@@ -114,11 +114,12 @@ final class UrlProvider extends AbstractProvider
     public static function random(
         int $length,
         bool $suffix = false,
-        bool $queryParameter = false
+        bool $queryParameter = false,
     ): string {
         $faker = self::faker();
 
         $pathParts = [];
+
         for ($i = 0; $i < $length; ++$i) {
             $pathParts[] = $faker->randomElement([
                 $faker->word(),
@@ -133,7 +134,7 @@ final class UrlProvider extends AbstractProvider
             DomainProvider::values()['domain'],
             \implode('/', $pathParts),
             $suffix ? $faker->randomElement(['.html', '.php', '.js', '.css', '.pdf', '.jpg', '.png', '.gif']) : '',
-            $queryParameter ? QueryProvider::random($faker->numberBetween(1, 10)) : ''
+            $queryParameter ? QueryProvider::random($faker->numberBetween(1, 10)) : '',
         );
     }
 }
