@@ -18,8 +18,8 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\DateTime\Iso8601Provider
  * @covers \Flexic\DataProvider\DateTime\AbstractDateProvider
+ * @covers \Flexic\DataProvider\DateTime\Iso8601Provider
  */
 final class Iso8601ProviderTest extends AbstractTestCase
 {
