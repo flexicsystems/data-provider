@@ -47,7 +47,7 @@ final class FileProvider extends AbstractProvider
      */
     public static function video(): \Generator
     {
-        yield from self::provideDataForValuesWhereKey(self::values(true), static function (string $key): bool {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return 'file-audio' === $key;
         });
     }
