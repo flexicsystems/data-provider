@@ -118,11 +118,6 @@ final class UrlProvider extends AbstractProvider
     ): string {
         $faker = self::faker();
 
-        $query = '';
-        if ($queryParameter) {
-            $query .= \sprintf('&%s=%s', $faker->word(), $faker->word());
-        }
-
         $pathParts = [];
         for ($i = 0; $i < $length; ++$i) {
             $pathParts[] = $faker->randomElement([
@@ -138,7 +133,7 @@ final class UrlProvider extends AbstractProvider
             DomainProvider::values()['domain'],
             \implode('/', $pathParts),
             $suffix ? $faker->randomElement(['.html', '.php', '.js', '.css', '.pdf', '.jpg', '.png', '.gif']) : '',
-            $queryParameter ? \sprintf('&%s', \ltrim($query, '&')) : ''
+            $queryParameter ? QueryProvider::random($faker->numberBetween(1, 10)) : ''
         );
     }
 }
