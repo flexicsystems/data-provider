@@ -18,15 +18,15 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\DateTime\WeekdayProvider
+ * @covers \Flexic\DataProvider\DateTime\DayNameOfWeekProvider
  */
-final class WeekdayProviderTest extends AbstractTestCase
+final class DayNameOfWeekProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\WeekdayProvider::arbitrary());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DayNameOfWeekProvider::arbitrary());
 
         self::assertIsString($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\WeekdayProvider::values());
+        self::assertContains($value, \Flexic\DataProvider\DateTime\DayNameOfWeekProvider::values());
     }
 }

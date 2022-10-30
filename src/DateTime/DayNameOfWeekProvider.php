@@ -14,7 +14,7 @@ namespace Flexic\DataProvider\DateTime;
 
 use Flexic\DataProvider\AbstractProvider;
 
-final class WeekdayProvider extends AbstractProvider
+final class DayNameOfWeekProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>

@@ -18,16 +18,16 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\DateTime\WeekdayNumberProvider
+ * @covers \Flexic\DataProvider\DateTime\DayOfWeekProvider
  */
-final class WeekdayNumberProviderTest extends AbstractTestCase
+final class DayOfWeekProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::int(\Flexic\DataProvider\DateTime\WeekdayNumberProvider::arbitrary());
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\DayOfWeekProvider::arbitrary());
 
         self::assertIsInt($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\WeekdayNumberProvider::values());
+        self::assertContains($value, \Flexic\DataProvider\DateTime\DayOfWeekProvider::values());
         self::assertGreaterThanOrEqual(1, $value);
         self::assertLessThanOrEqual(7, $value);
     }
