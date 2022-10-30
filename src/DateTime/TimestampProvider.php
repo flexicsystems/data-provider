@@ -75,6 +75,16 @@ final class TimestampProvider extends AbstractDateProvider
     /**
      * @return \Generator<string, array{0: int}>
      */
+    public static function veryFarFuture(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'timestamp-very-far-future' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: int}>
+     */
     public static function veryNearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -109,6 +119,16 @@ final class TimestampProvider extends AbstractDateProvider
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return 'timestamp-far-history' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: int}>
+     */
+    public static function veryFarHistory(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'timestamp-very-far-history' === $key;
         });
     }
 

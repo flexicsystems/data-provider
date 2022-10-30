@@ -26,8 +26,8 @@ final class TimestampProviderTest extends AbstractTestCase
     {
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::arbitrary());
 
-        self::assertIsAfter('-1 year', $value);
-        self::assertIsBefore('+1 year', $value);
+        self::assertIsAfter('-100 years', $value);
+        self::assertIsBefore('+100 years', $value);
     }
 
     public function testCurrentTimestamp(): void
@@ -50,7 +50,7 @@ final class TimestampProviderTest extends AbstractTestCase
     {
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::nearFuture());
 
-        self::assertIsAfter('+1 day', $value);
+        self::assertIsAfter('+2 days', $value);
         self::assertIsBefore('+1 week', $value);
     }
 
@@ -58,7 +58,7 @@ final class TimestampProviderTest extends AbstractTestCase
     {
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::future());
 
-        self::assertIsAfter('+1 day', $value);
+        self::assertIsAfter('+1 week', $value);
         self::assertIsBefore('+1 year', $value);
     }
 
@@ -66,8 +66,16 @@ final class TimestampProviderTest extends AbstractTestCase
     {
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::farFuture());
 
-        self::assertIsAfter('+1 day', $value);
-        self::assertIsBefore('+10 year', $value);
+        self::assertIsAfter('+1 year', $value);
+        self::assertIsBefore('+10 years', $value);
+    }
+
+    public function testVeryFarFutureTimestamp(): void
+    {
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::veryFarFuture());
+
+        self::assertIsAfter('+10 years', $value);
+        self::assertIsBefore('+100 years', $value);
     }
 
     public function testVeryNearHistoryTimestamp(): void
@@ -83,7 +91,7 @@ final class TimestampProviderTest extends AbstractTestCase
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::nearHistory());
 
         self::assertIsAfter('-1 week', $value);
-        self::assertIsBefore('-1 day', $value);
+        self::assertIsBefore('-2 days', $value);
     }
 
     public function testHistoryTimestamp(): void
@@ -91,7 +99,7 @@ final class TimestampProviderTest extends AbstractTestCase
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::history());
 
         self::assertIsAfter('-1 year', $value);
-        self::assertIsBefore('-1 day', $value);
+        self::assertIsBefore('-1 week', $value);
     }
 
     public function testFarHistoryTimestamp(): void
@@ -99,6 +107,14 @@ final class TimestampProviderTest extends AbstractTestCase
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::farHistory());
 
         self::assertIsAfter('-10 years', $value);
-        self::assertIsBefore('-1 day', $value);
+        self::assertIsBefore('-1 year', $value);
+    }
+
+    public function testVeryFarHistoryTimestamp(): void
+    {
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::veryFarHistory());
+
+        self::assertIsAfter('-100 years', $value);
+        self::assertIsBefore('-10 years', $value);
     }
 }
