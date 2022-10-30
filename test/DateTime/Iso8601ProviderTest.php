@@ -48,8 +48,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 day', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsBefore('+2 days', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsAfter('+1 day', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsBefore('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -59,8 +59,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+2 days', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsBefore('+1 week', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsAfter('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsBefore('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -70,8 +70,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 week', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsBefore('+1 year', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsAfter('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsBefore('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -81,8 +81,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 year', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsBefore('+10 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsAfter('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsBefore('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -92,8 +92,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+10 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsBefore('+100 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsAfter('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsBefore('+100 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -103,8 +103,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 day', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsAfter('-2 days', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -114,8 +114,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-2 days', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsAfter('-1 week', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsBefore('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsAfter('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -125,8 +125,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 week', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsAfter('-1 year', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsBefore('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsAfter('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -136,8 +136,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 year', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsAfter('-10 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsBefore('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsAfter('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 
@@ -147,8 +147,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-10 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
-        self::assertIsAfter('-100 years', (\DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value))->getTimestamp());
+        self::assertIsBefore('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
+        self::assertIsAfter('-100 years', \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value)->getTimestamp());
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::ATOM, $value));
     }
 }
