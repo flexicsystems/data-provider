@@ -21,11 +21,9 @@ final class EmailProvider extends AbstractProvider
      */
     public static function email(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'email' => $faker->email(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'email' === $key;
+        });
     }
 
     /**
@@ -33,11 +31,9 @@ final class EmailProvider extends AbstractProvider
      */
     public static function safeEmail(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'safe-email' => $faker->safeEmail(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'safe-email' === $key;
+        });
     }
 
     /**
@@ -45,11 +41,9 @@ final class EmailProvider extends AbstractProvider
      */
     public static function freeEmail(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'free-email' => $faker->freeEmail(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'free-email' === $key;
+        });
     }
 
     /**
@@ -57,10 +51,20 @@ final class EmailProvider extends AbstractProvider
      */
     public static function companyEmail(): \Generator
     {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'company-email' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
         $faker = self::faker();
 
-        yield from self::provideDataForValues([
+        return [
+            'email' => $faker->email(),
+            'safe-email' => $faker->safeEmail(),
+            'free-email' => $faker->freeEmail(),
             'company-email' => $faker->companyEmail(),
-        ]);
+        ];
     }
 }

@@ -21,11 +21,9 @@ final class HtmlProvider extends AbstractProvider
      */
     public static function normal(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'html' => $faker->randomHtml(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'html' === $key;
+        });
     }
 
     /**
@@ -33,11 +31,9 @@ final class HtmlProvider extends AbstractProvider
      */
     public static function flat(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'html-flat' => $faker->randomHtml(1, 1),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'html-flat' === $key;
+        });
     }
 
     /**
@@ -45,10 +41,19 @@ final class HtmlProvider extends AbstractProvider
      */
     public static function deep(): \Generator
     {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'html-deep' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
         $faker = self::faker();
 
-        yield from self::provideDataForValues([
+        return [
+            'html' => $faker->randomHtml(),
+            'html-flat' => $faker->randomHtml(1, 1),
             'html-deep' => $faker->randomHtml(10, 10),
-        ]);
+        ];
     }
 }

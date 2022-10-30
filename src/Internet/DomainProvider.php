@@ -34,11 +34,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function domain(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain' => $faker->domainName(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain' === $key;
+        });
     }
 
     /**
@@ -46,11 +44,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function tld(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain-tld' => $faker->tld(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-tld' === $key;
+        });
     }
 
     /**
@@ -58,11 +54,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function domainWord(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain-word' => $faker->domainWord(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-word' === $key;
+        });
     }
 
     /**
@@ -70,11 +64,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function url(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain-url' => $faker->url(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-url' === $key;
+        });
     }
 
     /**
@@ -82,11 +74,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function slug(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain-slug' => $faker->slug(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-slug' === $key;
+        });
     }
 
     /**
@@ -94,11 +84,9 @@ final class DomainProvider extends AbstractProvider
      */
     public static function freeEmailDomain(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'domain-free-email' => $faker->freeEmailDomain(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-free-email' === $key;
+        });
     }
 
     /**
@@ -106,10 +94,23 @@ final class DomainProvider extends AbstractProvider
      */
     public static function safeEmailDomain(): \Generator
     {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'domain-safe-email' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
         $faker = self::faker();
 
-        yield from self::provideDataForValues([
+        return [
+            'domain' => $faker->domainName(),
+            'domain-tld' => $faker->tld(),
+            'domain-word' => $faker->domainWord(),
+            'domain-url' => $faker->url(),
+            'domain-slug' => $faker->slug(),
+            'domain-free-email' => $faker->freeEmailDomain(),
             'domain-safe-email' => $faker->safeEmailDomain(),
-        ]);
+        ];
     }
 }
