@@ -86,4 +86,13 @@ abstract class AbstractTestCase extends Framework\TestCase
             $message,
         );
     }
+
+    public static function assertIsHtml(string $actual, string $message = ''): void
+    {
+        self::assertThat(
+            $actual,
+            new RegularExpression('/<html><head>(.*)<\/head><body>(.*)<\/body><\/html>/'),
+            $message,
+        );
+    }
 }
