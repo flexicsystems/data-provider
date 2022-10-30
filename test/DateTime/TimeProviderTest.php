@@ -49,7 +49,7 @@ final class TimeProviderTest extends AbstractTestCase
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertEqualsWithDelta(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
+            (new \DateTimeImmutable('now'))->setDate(1970, 0o1, 0o1)->getTimestamp(),
             $dateTime->getTimestamp(),
             1,
         );
@@ -64,7 +64,7 @@ final class TimeProviderTest extends AbstractTestCase
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertLessThanOrEqual(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
+            (new \DateTimeImmutable('now'))->setDate(1970, 0o1, 0o1)->getTimestamp(),
             $dateTime->getTimestamp(),
         );
     }
@@ -78,7 +78,7 @@ final class TimeProviderTest extends AbstractTestCase
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertGreaterThanOrEqual(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
+            (new \DateTimeImmutable('now'))->setDate(1970, 0o1, 0o1)->getTimestamp(),
             $dateTime->getTimestamp(),
         );
     }
