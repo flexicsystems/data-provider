@@ -209,7 +209,7 @@ final class FileProvider extends AbstractProvider
             '%s.%s%s',
             $name,
             ExtensionProvider::values()[\sprintf('extension-%s', $context)],
-            $compress ? '.gz' : '',
+            $compress ? \sprintf('.%s', CompressionProvider::values()['compression']) : '',
         );
     }
 }
