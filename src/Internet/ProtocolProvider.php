@@ -77,6 +77,7 @@ final class ProtocolProvider extends AbstractProvider
     public static function values(): array
     {
         $faker = self::faker();
+
         return [
             'protocol-http' => $faker->randomElement(['http', 'https']),
             'protocol-shell' => $faker->randomElement(['ssh']),
