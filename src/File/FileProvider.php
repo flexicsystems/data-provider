@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\File;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class FileProvider extends AbstractProvider
+final class FileProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -188,17 +198,18 @@ class FileProvider extends AbstractProvider
 
         $name = $faker->randomElement([
             $faker->uuid(),
-            \implode($faker->randomElement(['-', '_']),
-                $faker->words($faker->numberBetween(1, 5), false)
+            \implode(
+                $faker->randomElement(['-', '_']),
+                $faker->words($faker->numberBetween(1, 5), false),
             ),
-            $faker->randomNumber($faker->numberBetween(5, 9), true)
+            $faker->randomNumber($faker->numberBetween(5, 9), true),
         ]);
 
         return \sprintf(
             '%s.%s%s',
             $name,
             ExtensionProvider::values()[\sprintf('extension-%s', $context)],
-            $compress ? '.gz' : ''
+            $compress ? '.gz' : '',
         );
     }
 }
