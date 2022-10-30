@@ -75,10 +75,10 @@ final class UuidProvider extends AbstractProvider
             'uuid-v1' => (new Uid\UuidV1())->toRfc4122(),
             'uuid-v3' => (new Uid\UuidV3($faker->uuid))->toRfc4122(),
             'uuid-v4' => (new Uid\UuidV4())->toRfc4122(),
-            'uuid-v5' => (Uid\Uuid::v5(
+            'uuid-v5' => Uid\Uuid::v5(
                 Uid\Uuid::v4(),
-                $faker->domainWord
-            ))->toRfc4122(),
+                $faker->domainWord,
+            )->toRfc4122(),
             'uuid-v6' => (new Uid\UuidV6())->toRfc4122(),
         ];
     }

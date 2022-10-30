@@ -40,7 +40,7 @@ final class CuidProvider extends AbstractProvider
     {
         return [
             'cuid-long' => \EndyJasmi\Cuid::cuid(),
-            'cuid-short' => \EndyJasmi\Cuid::slug()
+            'cuid-short' => \EndyJasmi\Cuid::slug(),
         ];
     }
 }

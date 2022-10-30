@@ -63,9 +63,9 @@ final class UuidProviderTest extends AbstractTestCase
         self::assertThat(
             $actual,
             new RegularExpression(
-                \sprintf('/^[0-9A-Fa-z]{8}-[0-9A-Fa-z]{4}-%s[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/i', $prefix)
+                \sprintf('/^[0-9A-Fa-z]{8}-[0-9A-Fa-z]{4}-%s[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/i', $prefix),
             ),
-            $message
+            $message,
         );
     }
 }

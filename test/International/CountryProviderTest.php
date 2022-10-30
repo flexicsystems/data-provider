@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Test\International;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
@@ -10,7 +20,7 @@ use Flexic\DataProvider\Test\TestUtil;
  *
  * @covers \Flexic\DataProvider\International\CountryProvider
  */
-class CountryProviderTest extends AbstractTestCase
+final class CountryProviderTest extends AbstractTestCase
 {
     public function testCountry(): void
     {
