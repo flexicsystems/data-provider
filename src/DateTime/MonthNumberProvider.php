@@ -21,42 +21,6 @@ final class MonthNumberProvider extends AbstractProvider
         yield from self::provideDataForValues(self::values());
     }
 
-    /**
-     * @return \Generator<string, array{0: int}>
-     */
-    public static function afterNow(): \Generator
-    {
-        $actualMonth = (int) (new \DateTimeImmutable('now'))->format('n');
-
-        yield from self::provideDataForValuesWhere(self::values(), static function (int $value) use ($actualMonth): bool {
-            return $value > $actualMonth;
-        });
-    }
-
-    /**
-     * @return \Generator<string, array{0: int}>
-     */
-    public static function beforeNow(): \Generator
-    {
-        $actualMonth = (int) (new \DateTimeImmutable('now'))->format('n');
-
-        yield from self::provideDataForValuesWhere(self::values(), static function (int $value) use ($actualMonth): bool {
-            return $value < $actualMonth;
-        });
-    }
-
-    /**
-     * @return \Generator<string, array{0: int}>
-     */
-    public static function now(): \Generator
-    {
-        $actualMonth = (int) (new \DateTimeImmutable('now'))->format('n');
-
-        yield from self::provideDataForValuesWhere(self::values(), static function (int $value) use ($actualMonth): bool {
-            return $value === $actualMonth;
-        });
-    }
-
     public static function values(): array
     {
         return [

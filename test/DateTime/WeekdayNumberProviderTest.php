@@ -18,17 +18,17 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\DateTime\MonthNumberProvider
+ * @covers \Flexic\DataProvider\DateTime\WeekdayNumberProvider
  */
-final class MonthNumberProviderTest extends AbstractTestCase
+final class WeekdayNumberProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::int(\Flexic\DataProvider\DateTime\MonthNumberProvider::arbitrary());
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\WeekdayNumberProvider::arbitrary());
 
         self::assertIsInt($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\MonthNumberProvider::values());
+        self::assertContains($value, \Flexic\DataProvider\DateTime\WeekdayNumberProvider::values());
         self::assertGreaterThanOrEqual(1, $value);
-        self::assertLessThanOrEqual(12, $value);
+        self::assertLessThanOrEqual(7, $value);
     }
 }
