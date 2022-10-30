@@ -38,7 +38,7 @@ final class FilePathProvider extends AbstractProvider
     public static function mac(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'file-path-mac' === $key;
+            return 'file-path-unix' === $key;
         });
     }
 
