@@ -19,13 +19,13 @@ use Flexic\DataProvider\Test\TestUtil;
  * @internal
  *
  * @covers \Flexic\DataProvider\DateTime\AbstractDateProvider
- * @covers \Flexic\DataProvider\DateTime\DateProvider
+ * @covers \Flexic\DataProvider\DateTime\DateStringProvider
  */
-final class DateProviderTest extends AbstractTestCase
+final class DateStringProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::arbitrary());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::arbitrary());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -33,7 +33,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testNow(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::now());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::now());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -42,7 +42,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testVeryNearFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryNearFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::veryNearFuture());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -52,7 +52,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testNearFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::nearFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::nearFuture());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -62,7 +62,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::future());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::future());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -72,7 +72,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFarFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::farFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::farFuture());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -82,7 +82,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testVeryFarFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryFarFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::veryFarFuture());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -92,7 +92,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testVeryNearHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryNearHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::veryNearHistory());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -102,7 +102,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testNearHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::nearHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::nearHistory());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -112,7 +112,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::history());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::history());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -122,7 +122,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFarHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::farHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::farHistory());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
@@ -132,7 +132,7 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testVeryFarHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryFarHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateStringProvider::veryFarHistory());
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\DateTime;
 
-final class DateProvider extends AbstractDateProvider
+final class DateStringProvider extends AbstractDateProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
