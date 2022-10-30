@@ -13,7 +13,7 @@ composer require --dev flexic/data-provider
 
 # Usage
 
-The `flexic/data-provider`package provides the following providers:
+The `flexic/data-provider` package provides the following providers:
 
 ### Id
 `Flexic\DataProvider\Types\CuidProvider`
