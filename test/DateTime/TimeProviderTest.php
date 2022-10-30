@@ -78,7 +78,7 @@ final class TimeProviderTest extends AbstractTestCase
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertGreaterThanOrEqual(
-            (new \DateTimeImmutable('now'))->setDate(1970, 1, 1)->getTimestamp(),
+            (new \DateTimeImmutable('now'))->setDate(1970, 1, 1)->setTime(0, 0, 0)->getTimestamp(),
             $dateTime->getTimestamp(),
         );
     }
