@@ -37,7 +37,7 @@ final class DomainProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function freeEmailDomain(): \Generator
+    public static function freeEmail(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'domain-free-email' === $key;
@@ -47,7 +47,7 @@ final class DomainProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function safeEmailDomain(): \Generator
+    public static function safeEmail(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'domain-safe-email' === $key;
