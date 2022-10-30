@@ -21,7 +21,9 @@ final class TimeZoneProvider extends AbstractProvider
      */
     public static function arbitrary(): \Generator
     {
-        yield from self::provideDataForValues(self::values());
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return !\in_array($key, ['timezone-unspecified', 'timezone-utc']);
+        });
     }
 
     /**
@@ -127,10 +129,10 @@ final class TimeZoneProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function unsupported(): \Generator
+    public static function unspecified(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'timezone-unsupported' === $key;
+            return 'timezone-unspecified' === $key;
         });
     }
 
@@ -1109,7 +1111,7 @@ final class TimeZoneProvider extends AbstractProvider
                 'Atlantic/St_Helena',
                 'Atlantic/Stanley',
             ]),
-            'timezone-unsupported' => $faker->randomElement([
+            'timezone-unspecified' => $faker->randomElement([
                 'Africa/Asmera',
                 'Africa/Timbuktu',
                 'America/Argentina/ComodRivadavia',
