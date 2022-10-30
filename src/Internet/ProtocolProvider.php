@@ -14,92 +14,75 @@ namespace Flexic\DataProvider\Internet;
 
 use Flexic\DataProvider\AbstractProvider;
 
-final class DomainProvider extends AbstractProvider
+final class ProtocolProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function scheme(): \Generator
+    public static function arbitrary(): \Generator
     {
-        $values = [
-            'scheme-http' => 'http',
-            'scheme-https' => 'https',
-        ];
-
-        yield from self::provideDataForValues($values);
+        yield from self::provideDataForValues(self::values());
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function domain(): \Generator
+    public static function http(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain' === $key;
+            return 'protocol-http' === $key;
         });
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function domainWord(): \Generator
+    public static function shell(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain-word' === $key;
+            return 'protocol-shell' === $key;
         });
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function url(): \Generator
+    public static function file(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain-url' === $key;
+            return 'protocol-file' === $key;
         });
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function slug(): \Generator
+    public static function mail(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain-slug' === $key;
+            return 'protocol-mail' === $key;
         });
     }
 
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function freeEmailDomain(): \Generator
+    public static function ip(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain-free-email' === $key;
-        });
-    }
-
-    /**
-     * @return \Generator<string, array{0: string}>
-     */
-    public static function safeEmailDomain(): \Generator
-    {
-        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'domain-safe-email' === $key;
+            return 'protocol-ip' === $key;
         });
     }
 
     public static function values(): array
     {
         $faker = self::faker();
-
         return [
-            'domain' => $faker->domainName(),
-            'domain-word' => $faker->domainWord(),
-            'domain-url' => $faker->url(),
-            'domain-slug' => $faker->slug(),
-            'domain-free-email' => $faker->freeEmailDomain(),
-            'domain-safe-email' => $faker->safeEmailDomain(),
+            'protocol-http' => $faker->randomElement(['http', 'https']),
+            'protocol-shell' => $faker->randomElement(['ssh']),
+            'protocol-file' => $faker->randomElement(['ftp', 'ftps']),
+            'protocol-mail' => $faker->randomElement(['smtp', 'pop3', 'imap']),
+            'protocol-ip' => $faker->randomElement(['tcp', 'udp', 'ip']),
         ];
     }
 }
