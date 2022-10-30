@@ -123,11 +123,20 @@ final class UrlProvider extends AbstractProvider
             $query .= \sprintf('&%s=%s', $faker->word(), $faker->word());
         }
 
+        $pathParts = [];
+        for ($i = 0; $i < $length; ++$i) {
+            $pathParts[] = $faker->randomElement([
+                $faker->word(),
+                $faker->slug(),
+                $faker->uuid(),
+            ]);
+        }
+
         return \sprintf(
             '%s://%s/%s%s%s',
             ProtocolProvider::values()['protocol-http'],
             DomainProvider::values()['domain'],
-            \implode('/', $faker->words($length, false)),
+            \implode('/', $pathParts),
             $suffix ? $faker->randomElement(['.html', '.php', '.js', '.css', '.pdf', '.jpg', '.png', '.gif']) : '',
             $queryParameter ? \sprintf('&%s', \ltrim($query, '&')) : ''
         );
