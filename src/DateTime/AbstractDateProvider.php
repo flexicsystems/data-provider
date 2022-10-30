@@ -16,14 +16,14 @@ use Flexic\DataProvider\AbstractProvider;
 
 abstract class AbstractDateProvider extends AbstractProvider
 {
-    public static function generatedValues(string $prefix, string $veryNearFuture = '+15 minutes', string $veryNearHistory = '+15 minutes'): array
+    public static function generatedValues(string $prefix): array
     {
         return [
             \sprintf('%s-now', $prefix) => self::random(),
             \sprintf('%s-very-near-future', $prefix) => self::random('+1 day', '+2 days'),
             \sprintf('%s-near-future', $prefix) => self::random('+1 day', '+1 week'),
             \sprintf('%s-future', $prefix) => self::random('+1 day', '+1 year'),
-            \sprintf('%s-far-future', $prefix) => self::random('+1 day', '+1 weeks'),
+            \sprintf('%s-far-future', $prefix) => self::random('+1 day', '+10 years'),
             \sprintf('%s-very-near-history', $prefix) => self::random('-2 days', '-1 day'),
             \sprintf('%s-near-history', $prefix) => self::random('-1 week', '-1 day'),
             \sprintf('%s-history', $prefix) => self::random('-1 year', '-1 day'),
