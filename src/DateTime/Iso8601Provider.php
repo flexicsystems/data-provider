@@ -75,6 +75,16 @@ final class Iso8601Provider extends AbstractDateProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
+    public static function veryFarFuture(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'iso8601-very-far-future' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function veryNearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -109,6 +119,16 @@ final class Iso8601Provider extends AbstractDateProvider
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return 'iso8601-far-history' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function veryFarHistory(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'iso8601-very-far-history' === $key;
         });
     }
 

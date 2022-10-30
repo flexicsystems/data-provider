@@ -46,10 +46,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertGreaterThan(
-            (new \DateTimeImmutable('now'))->setTime(0, 0, 0)->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsAfter('+1 day', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('+2 days', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testNearFuture(): void
@@ -58,10 +56,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertGreaterThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsAfter('+2 days', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('+1 week', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testFuture(): void
@@ -70,10 +66,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertGreaterThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsAfter('+1 week', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('+1 year', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testFarFuture(): void
@@ -82,10 +76,18 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertGreaterThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsAfter('+1 year', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('+10 years', (new \DateTimeImmutable($value))->getTimestamp());
+    }
+
+    public function testVeryFarFuture(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::veryFarFuture());
+
+        self::assertNotEmpty($value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
+        self::assertIsAfter('+10 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('+100 years', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testVeryNearHistory(): void
@@ -94,10 +96,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertLessThan(
-            (new \DateTimeImmutable('now'))->setTime(0, 0, 0)->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsBefore('-1 day', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('-2 days', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testNearHistory(): void
@@ -106,10 +106,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertLessThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsBefore('-2 days', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('-1 week', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testHistory(): void
@@ -118,10 +116,8 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertLessThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsBefore('-1 week', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('-1 year', (new \DateTimeImmutable($value))->getTimestamp());
     }
 
     public function testFarHistory(): void
@@ -130,9 +126,17 @@ final class Iso8601ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertLessThan(
-            (new \DateTimeImmutable('now'))->getTimestamp(),
-            (new \DateTimeImmutable($value))->getTimestamp(),
-        );
+        self::assertIsBefore('-1 year', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('-10 years', (new \DateTimeImmutable($value))->getTimestamp());
+    }
+
+    public function testVeryFarHistory(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::veryFarHistory());
+
+        self::assertNotEmpty($value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
+        self::assertIsBefore('-10 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('-100 years', (new \DateTimeImmutable($value))->getTimestamp());
     }
 }
