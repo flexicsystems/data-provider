@@ -27,7 +27,7 @@ final class EmailProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function email(): \Generator
+    public static function random(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'email' === $key;
@@ -37,7 +37,7 @@ final class EmailProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function safeEmail(): \Generator
+    public static function safe(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'safe-email' === $key;
@@ -47,7 +47,7 @@ final class EmailProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function freeEmail(): \Generator
+    public static function free(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'free-email' === $key;
@@ -57,7 +57,7 @@ final class EmailProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function companyEmail(): \Generator
+    public static function company(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
             return 'company-email' === $key;
