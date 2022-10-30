@@ -59,4 +59,13 @@ abstract class AbstractTestCase extends Framework\TestCase
             ++$i;
         }
     }
+
+    public static function assertStringContainsOnly(string $expected, string $actual, string $message = ''): void
+    {
+        self::assertThat(
+            $actual,
+            new RegularExpression($expected),
+            $message,
+        );
+    }
 }
