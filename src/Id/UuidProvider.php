@@ -22,9 +22,9 @@ final class UuidProvider extends AbstractProvider
      */
     public static function v1(): \Generator
     {
-        yield from self::provideDataForValues([
-            'uuid-v1' => (new Uid\UuidV1())->toRfc4122(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'uuid-v1' === $key;
+        });
     }
 
     /**
@@ -32,11 +32,9 @@ final class UuidProvider extends AbstractProvider
      */
     public static function v3(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'uuid-v3' => (new Uid\UuidV3($faker->uuid))->toRfc4122(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'uuid-v3' === $key;
+        });
     }
 
     /**
@@ -44,9 +42,9 @@ final class UuidProvider extends AbstractProvider
      */
     public static function v4(): \Generator
     {
-        yield from self::provideDataForValues([
-            'uuid-v4' => (new Uid\UuidV4())->toRfc4122(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'uuid-v4' === $key;
+        });
     }
 
     /**
@@ -54,11 +52,9 @@ final class UuidProvider extends AbstractProvider
      */
     public static function v5(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'uuid-v5' => (new Uid\UuidV5($faker->uuid))->toRfc4122(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'uuid-v5' === $key;
+        });
     }
 
     /**
@@ -66,8 +62,24 @@ final class UuidProvider extends AbstractProvider
      */
     public static function v6(): \Generator
     {
-        yield from self::provideDataForValues([
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'uuid-v6' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
+        $faker = self::faker();
+
+        return [
+            'uuid-v1' => (new Uid\UuidV1())->toRfc4122(),
+            'uuid-v3' => (new Uid\UuidV3($faker->uuid))->toRfc4122(),
+            'uuid-v4' => (new Uid\UuidV4())->toRfc4122(),
+            'uuid-v5' => Uid\Uuid::v5(
+                Uid\Uuid::v4(),
+                $faker->domainWord,
+            )->toRfc4122(),
             'uuid-v6' => (new Uid\UuidV6())->toRfc4122(),
-        ]);
+        ];
     }
 }

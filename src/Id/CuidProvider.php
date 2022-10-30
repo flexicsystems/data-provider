@@ -21,9 +21,9 @@ final class CuidProvider extends AbstractProvider
      */
     public static function long(): \Generator
     {
-        yield from self::provideDataForValues([
-            'cuid' => \EndyJasmi\Cuid::cuid(),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'cuid-long' === $key;
+        });
     }
 
     /**
@@ -31,8 +31,16 @@ final class CuidProvider extends AbstractProvider
      */
     public static function short(): \Generator
     {
-        yield from self::provideDataForValues([
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'cuid-short' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
+        return [
+            'cuid-long' => \EndyJasmi\Cuid::cuid(),
             'cuid-short' => \EndyJasmi\Cuid::slug(),
-        ]);
+        ];
     }
 }

@@ -25,4 +25,9 @@ final class TestUtil
             return $input[0];
         }, $generator->current());
     }
+
+    public static function int(\Generator $generator): int
+    {
+        return $generator->current()[0];
+    }
 }
