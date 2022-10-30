@@ -30,7 +30,7 @@ final class HtmlProvider extends AbstractProvider
     public static function normal(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
-            return 'html' === $key;
+            return 'html-normal' === $key;
         });
     }
 
@@ -59,7 +59,7 @@ final class HtmlProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'html-random' => $faker->randomHtml(),
+            'html-normal' => $faker->randomHtml(),
             'html-simple' => $faker->randomHtml(1, 1),
             'html-complex' => $faker->randomHtml(10, 10),
         ];

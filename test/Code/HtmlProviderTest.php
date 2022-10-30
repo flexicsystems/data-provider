@@ -20,4 +20,31 @@ class HtmlProviderTest extends AbstractTestCase
         self::assertNotEmpty($value);
         self::assertIsHtml($value);
     }
+
+    public function testNormal(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::normal());
+
+        self::assertIsString($value);
+        self::assertNotEmpty($value);
+        self::assertIsHtml($value);
+    }
+
+    public function testSimple(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::simple());
+
+        self::assertIsString($value);
+        self::assertNotEmpty($value);
+        self::assertIsHtml($value);
+    }
+
+    public function testComplex(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::complex());
+
+        self::assertIsString($value);
+        self::assertNotEmpty($value);
+        self::assertIsHtml($value);
+    }
 }
