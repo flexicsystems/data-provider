@@ -19,11 +19,9 @@ final class UserAgentProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function random(): \Generator
+    public static function arbitrary(): \Generator
     {
-        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'user-agent-random' === $key;
-        });
+        yield from self::provideDataForValues(self::values());
     }
 
     /**
@@ -91,7 +89,6 @@ final class UserAgentProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'user-agent-random' => $faker->userAgent(),
             'user-agent-chrome' => $faker->chrome(),
             'user-agent-firefox' => $faker->firefox(),
             'user-agent-safari' => $faker->safari(),
