@@ -74,6 +74,16 @@ final class ProtocolProvider extends AbstractProvider
         });
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function security(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key) {
+            return 'protocol-security' === $key;
+        });
+    }
+
     public static function values(): array
     {
         $faker = self::faker();
@@ -84,6 +94,7 @@ final class ProtocolProvider extends AbstractProvider
             'protocol-file' => $faker->randomElement(['ftp', 'ftps']),
             'protocol-mail' => $faker->randomElement(['smtp', 'pop3', 'imap']),
             'protocol-ip' => $faker->randomElement(['tcp', 'udp', 'ip']),
+            'protocol-security' => $faker->randomElement(['ssl', 'tls', 'wpa3', 'wpa2', 'wpa', 'wep', 'ipsec']),
         ];
     }
 }
