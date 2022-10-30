@@ -29,42 +29,4 @@ final class MonthProviderTest extends AbstractTestCase
         self::assertIsString($value);
         self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
     }
-
-    public function testAfterNow(): void
-    {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\MonthProvider::afterNow());
-
-        self::assertIsString($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
-
-        $monthNumber = \date('m', \strtotime(\sprintf('%s %s', $value, (new \DateTimeImmutable('now'))->format('Y'))));
-
-        self::assertGreaterThan((new \DateTimeImmutable('now'))->format('m'), $monthNumber);
-        self::assertLessThanOrEqual(12, $monthNumber);
-    }
-
-    public function testBeforeNow(): void
-    {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\MonthProvider::beforeNow());
-
-        self::assertIsString($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
-
-        $monthNumber = \date('m', \strtotime(\sprintf('%s %s', $value, (new \DateTimeImmutable('now'))->format('Y'))));
-
-        self::assertLessThan((new \DateTimeImmutable('now'))->format('m'), $monthNumber);
-        self::assertGreaterThanOrEqual(1, $monthNumber);
-    }
-
-    public function testNow(): void
-    {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\MonthProvider::now());
-
-        self::assertIsString($value);
-        self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
-
-        $monthNumber = \date('m', \strtotime(\sprintf('%s %s', $value, (new \DateTimeImmutable('now'))->format('Y'))));
-
-        self::assertSame((new \DateTimeImmutable('now'))->format('m'), $monthNumber);
-    }
 }
