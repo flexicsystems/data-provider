@@ -28,7 +28,7 @@ final class TimeProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
-        self::assertInstanceOf(\DateTime::class, \DateTime::createFromFormat('H:i:s', $value));
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!H:i:s', $value));
 
         $blocks = \explode(':', $value);
         self::assertCount(3, $blocks);
@@ -46,12 +46,12 @@ final class TimeProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
-        $dateTime = \DateTime::createFromFormat('H:i:s', $value);
-        self::assertInstanceOf(\DateTime::class, $dateTime);
+        $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertEqualsWithDelta(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             $dateTime->getTimestamp(),
-            1
+            1,
         );
     }
 
@@ -61,8 +61,8 @@ final class TimeProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
-        $dateTime = \DateTime::createFromFormat('H:i:s', $value);
-        self::assertInstanceOf(\DateTime::class, $dateTime);
+        $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertLessThanOrEqual(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             $dateTime->getTimestamp(),
@@ -75,8 +75,8 @@ final class TimeProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
-        $dateTime = \DateTime::createFromFormat('H:i:s', $value);
-        self::assertInstanceOf(\DateTime::class, $dateTime);
+        $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
         self::assertGreaterThanOrEqual(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             $dateTime->getTimestamp(),
