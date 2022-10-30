@@ -68,11 +68,12 @@ final class CssProvider extends AbstractProvider
         $faker = self::faker();
 
         $selectors = [];
-        for ($i = 0; $i < $faker->numberBetween($min, $max); ++$i) {
+
+        for ($i = 0; $faker->numberBetween($min, $max) > $i; ++$i) {
             $key = \sprintf('%s%s', $faker->randomElement(['.', '#']), $faker->word);
             $selectors[$key] = [];
 
-            for ($j = 0; $j < $faker->numberBetween(1, 15); ++$j) {
+            for ($j = 0; $faker->numberBetween(1, 15) > $j; ++$j) {
                 $selectors[$key][] = $faker->randomElement([
                     \sprintf('font-size: %s', $faker->numberBetween(0, 100)),
                     \sprintf('width: %s%s', $faker->numberBetween(0, 100), $faker->randomElement(['px', '%', 'em'])),
@@ -135,16 +136,16 @@ final class CssProvider extends AbstractProvider
                 ]);
             }
         }
-        
+
         $styles = [];
-        
+
         foreach ($selectors as $key => $value) {
             $styles[] = \sprintf('%s{%s;}', $key, \implode(';', $value));
         }
 
         return \implode(
             \sprintf('%s%s', \PHP_EOL, \PHP_EOL),
-            $styles
+            $styles,
         );
     }
 }
