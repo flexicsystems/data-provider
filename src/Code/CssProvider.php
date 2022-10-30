@@ -57,9 +57,9 @@ final class CssProvider extends AbstractProvider
     public static function values(): array
     {
         return [
-            'css-normal' => self::random(1, 9),
+            'css-normal' => self::random(1, 100),
             'css-simple' => self::random(1, 1),
-            'css-complex' => self::random(1, 9),
+            'css-complex' => self::random(100, 10000),
         ];
     }
 
@@ -144,7 +144,7 @@ final class CssProvider extends AbstractProvider
         }
 
         return \implode(
-            \sprintf('%s%s', \PHP_EOL, \PHP_EOL),
+            ' ',
             $styles,
         );
     }
