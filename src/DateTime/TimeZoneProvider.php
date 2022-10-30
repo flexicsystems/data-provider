@@ -22,7 +22,7 @@ final class TimeZoneProvider extends AbstractProvider
     public static function arbitrary(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return !\in_array($key, ['timezone-unspecified', 'timezone-utc']);
+            return !\in_array($key, ['timezone-unspecified', 'timezone-utc'], true);
         });
     }
 
@@ -298,7 +298,7 @@ final class TimeZoneProvider extends AbstractProvider
                 'America/Whitehorse',
                 'America/Winnipeg',
                 'America/Yakutat',
-                'America/Yellowknife'
+                'America/Yellowknife',
             ]),
             'timezone-europe' => $faker->randomElement([
                 'Europe/Amsterdam',
@@ -1286,7 +1286,7 @@ final class TimeZoneProvider extends AbstractProvider
                 'WET',
                 'Zulu',
             ]),
-            'timezone-utc' => 'UTC'
+            'timezone-utc' => 'UTC',
         ];
     }
 }

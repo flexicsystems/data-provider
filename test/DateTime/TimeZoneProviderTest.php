@@ -126,7 +126,7 @@ final class TimeZoneProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\DateTime\TimeZoneProvider::unspecified());
 
         self::assertIsString($value);
-        self::assertGreaterThan(0, \strlen($value));
+        self::assertGreaterThan(0, \mb_strlen($value));
     }
 
     public function testUTC(): void
