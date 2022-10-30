@@ -137,10 +137,10 @@ final class ExtensionProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function models(): \Generator
+    public static function model(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'extension-models' === $key;
+            return 'extension-model' === $key;
         });
     }
 
@@ -180,7 +180,7 @@ final class ExtensionProvider extends AbstractProvider
             'extension-database' => $faker->randomElement(['csv', 'dat', 'db', 'dbf', 'log', 'mdb', 'sav', 'sql', 'tar', 'xml', 'json', 'yaml', 'yml', 'ini', 'log', 'dat', 'neon']),
             'extension-presentation' => $faker->randomElement(['key', 'odp', 'pps', 'ppt', 'pptx']),
             'extension-spreadsheet' => $faker->randomElement(['ods', 'xlr', 'xls', 'xlsx']),
-            'extension-models' => $faker->randomElement(['3dm', '3ds', 'max', 'obj']),
+            'extension-model' => $faker->randomElement(['3dm', '3ds', 'max', 'obj']),
             'extension-message' => $faker->randomElement(['eml', 'emlx', 'msg', 'oft', 'ost', 'pst', 'vcf', 'email', 'sms']),
             'extension-system' => $faker->randomElement(['bak', 'tmp', 'cab', 'cfg', 'cpl', 'cur', 'dll', 'dmp', 'drv', 'icns', 'ico', 'ini', 'lnk', 'msi', 'sys', 'tmp', 'crdownload', 'ics', 'msi', 'part', 'torrent']),
         ];
