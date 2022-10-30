@@ -18,34 +18,34 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\DateTime\DateProvider
+ * @covers \Flexic\DataProvider\DateTime\Iso8601Provider
  * @covers \Flexic\DataProvider\DateTime\AbstractDateProvider
  */
-final class DateProviderTest extends AbstractTestCase
+final class Iso8601ProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::arbitrary());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::arbitrary());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
     }
 
     public function testNow(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::now());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::now());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertSame((new \DateTimeImmutable('now'))->format('F j, Y'), $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
+        self::assertSame((new \DateTimeImmutable('now'))->format(\DateTime::ATOM), $value);
     }
 
     public function testVeryNearFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryNearFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::veryNearFuture());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertGreaterThan(
             (new \DateTimeImmutable('now'))->setTime(0, 0, 0)->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -54,10 +54,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testNearFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::nearFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::nearFuture());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertGreaterThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -66,10 +66,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::future());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::future());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertGreaterThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -78,10 +78,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFarFuture(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::farFuture());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::farFuture());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertGreaterThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -90,10 +90,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testVeryNearHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::veryNearHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::veryNearHistory());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertLessThan(
             (new \DateTimeImmutable('now'))->setTime(0, 0, 0)->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -102,10 +102,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testNearHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::nearHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::nearHistory());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertLessThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -114,10 +114,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::history());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::history());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertLessThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
@@ -126,10 +126,10 @@ final class DateProviderTest extends AbstractTestCase
 
     public function testFarHistory(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\DateTime\DateProvider::farHistory());
+        $value = TestUtil::string(\Flexic\DataProvider\DateTime\Iso8601Provider::farHistory());
 
         self::assertNotEmpty($value);
-        self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\+[0-9]{2}:[0-9]{2})/', $value);
         self::assertLessThan(
             (new \DateTimeImmutable('now'))->getTimestamp(),
             (new \DateTimeImmutable($value))->getTimestamp(),
