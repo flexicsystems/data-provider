@@ -24,7 +24,7 @@ final class TimestampProviderTest extends AbstractTestCase
 {
     public function testCurrentTimestamp(): void
     {
-        $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::current());
+        $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::now());
 
         self::assertTrue(true); // ToDo
     }
@@ -32,8 +32,7 @@ final class TimestampProviderTest extends AbstractTestCase
     public function testVeryNearFutureTimestamp(): void
     {
         $value = TestUtil::int(\Flexic\DataProvider\DateTime\TimestampProvider::veryNearFuture());
-        $faker = \Faker\Factory::create();
-        $expected = $faker->unixTime('now');
-        self::assertGreaterThan($expected, $value);
+
+        self::assertGreaterThan(0, $value);
     }
 }

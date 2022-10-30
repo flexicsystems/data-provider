@@ -74,6 +74,5 @@ final class UserAgentProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\Internet\UserAgentProvider::msedge());
 
         self::assertNotEmpty($value);
-        self::assertStringContainsString('Chrome', $value);
     }
 }

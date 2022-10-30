@@ -12,9 +12,7 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\DateTime;
 
-use Flexic\DataProvider\AbstractProvider;
-
-final class DateProvider extends AbstractProvider
+final class DateProvider extends AbstractDateProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -27,10 +25,10 @@ final class DateProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function current(): \Generator
+    public static function now(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'date-current' === $key;
+            return 'date-now' === $key;
         });
     }
 
@@ -116,18 +114,8 @@ final class DateProvider extends AbstractProvider
 
     public static function values(): array
     {
-        $faker = self::faker();
-
-        return [
-            'date-current' => $faker->date('now'),
-            'date-very-near-future' => $faker->date('+15 minutes'),
-            'date-near-future' => $faker->date('+1 week'),
-            'date-future' => $faker->date('+1 year'),
-            'date-far-future' => $faker->date('+10 years'),
-            'date-very-near-history' => $faker->date('-15 minutes'),
-            'date-near-history' => $faker->date('-1 week'),
-            'date-history' => $faker->date('-1 year'),
-            'date-far-history' => $faker->date('-10 years'),
-        ];
+        return \array_map(static function (\DateTimeImmutable $value): string {
+            return $value->format('F j, Y');
+        }, parent::generatedValues('date', '+1 day', '-1 day'));
     }
 }

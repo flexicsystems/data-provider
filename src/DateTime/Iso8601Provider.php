@@ -12,9 +12,7 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\DateTime;
 
-use Flexic\DataProvider\AbstractProvider;
-
-final class Iso8601Provider extends AbstractProvider
+final class Iso8601Provider extends AbstractDateProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -27,10 +25,10 @@ final class Iso8601Provider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function current(): \Generator
+    public static function now(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-current' === $key;
+            return 'iso8601-now' === $key;
         });
     }
 
@@ -116,18 +114,8 @@ final class Iso8601Provider extends AbstractProvider
 
     public static function values(): array
     {
-        $faker = self::faker();
-
-        return [
-            'iso8601-current' => $faker->iso8601('now'),
-            'iso8601-very-near-future' => $faker->iso8601('+15 minutes'),
-            'iso8601-near-future' => $faker->iso8601('+1 week'),
-            'iso8601-future' => $faker->iso8601('+1 year'),
-            'iso8601-far-future' => $faker->iso8601('+10 years'),
-            'iso8601-very-near-history' => $faker->iso8601('-15 minutes'),
-            'iso8601-near-history' => $faker->iso8601('-1 week'),
-            'iso8601-history' => $faker->iso8601('-1 year'),
-            'iso8601-far-history' => $faker->iso8601('-10 years'),
-        ];
+        return \array_map(static function (\DateTimeImmutable $value): string {
+            return $value->format(\DateTime::ATOM);
+        }, parent::generatedValues('iso8601'));
     }
 }

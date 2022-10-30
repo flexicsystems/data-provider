@@ -12,9 +12,7 @@ declare(strict_types=1);
 
 namespace Flexic\DataProvider\DateTime;
 
-use Flexic\DataProvider\AbstractProvider;
-
-final class TimestampProvider extends AbstractProvider
+final class TimestampProvider extends AbstractDateProvider
 {
     /**
      * @return \Generator<string, array{0: int}>
@@ -27,10 +25,10 @@ final class TimestampProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: int}>
      */
-    public static function current(): \Generator
+    public static function now(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-current' === $key;
+            return 'timestamp-now' === $key;
         });
     }
 
@@ -40,7 +38,7 @@ final class TimestampProvider extends AbstractProvider
     public static function veryNearFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-very-near-future' === $key;
+            return 'timestamp-very-near-future' === $key;
         });
     }
 
@@ -50,7 +48,7 @@ final class TimestampProvider extends AbstractProvider
     public static function nearFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-near-future' === $key;
+            return 'timestamp-near-future' === $key;
         });
     }
 
@@ -60,7 +58,7 @@ final class TimestampProvider extends AbstractProvider
     public static function future(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-future' === $key;
+            return 'timestamp-future' === $key;
         });
     }
 
@@ -70,7 +68,7 @@ final class TimestampProvider extends AbstractProvider
     public static function farFuture(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-far-future' === $key;
+            return 'timestamp-far-future' === $key;
         });
     }
 
@@ -80,7 +78,7 @@ final class TimestampProvider extends AbstractProvider
     public static function veryNearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-very-near-history' === $key;
+            return 'timestamp-very-near-history' === $key;
         });
     }
 
@@ -90,7 +88,7 @@ final class TimestampProvider extends AbstractProvider
     public static function nearHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-near-history' === $key;
+            return 'timestamp-near-history' === $key;
         });
     }
 
@@ -100,7 +98,7 @@ final class TimestampProvider extends AbstractProvider
     public static function history(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-history' === $key;
+            return 'timestamp-history' === $key;
         });
     }
 
@@ -110,24 +108,14 @@ final class TimestampProvider extends AbstractProvider
     public static function farHistory(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'iso8601-far-history' === $key;
+            return 'timestamp-far-history' === $key;
         });
     }
 
     public static function values(): array
     {
-        $faker = self::faker();
-
-        return [
-            'iso8601-current' => $faker->unixTime('now'),
-            'iso8601-very-near-future' => $faker->unixTime('+15 minutes'),
-            'iso8601-near-future' => $faker->unixTime('+1 week'),
-            'iso8601-future' => $faker->unixTime('+1 year'),
-            'iso8601-far-future' => $faker->unixTime('+10 years'),
-            'iso8601-very-near-history' => $faker->unixTime('-15 minutes'),
-            'iso8601-near-history' => $faker->unixTime('-1 week'),
-            'iso8601-history' => $faker->unixTime('-1 year'),
-            'iso8601-far-history' => $faker->unixTime('-10 years'),
-        ];
+        return \array_map(static function (\DateTimeImmutable $dateTime): int {
+            return $dateTime->getTimestamp();
+        }, parent::generatedValues('timestamp'));
     }
 }
