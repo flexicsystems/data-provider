@@ -91,7 +91,7 @@ final class QueryProvider extends AbstractProvider
             'query-short' => self::random(3),
             'query-normal' => self::random(5),
             'query-long' => self::random(10),
-            'query-very-long' => self::random(20),
+            'query-very-long' => self::random(25),
             'query-extreme-long' => self::random(50),
         ];
     }
