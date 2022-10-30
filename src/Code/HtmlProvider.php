@@ -10,12 +10,20 @@ declare(strict_types=1);
  * @version 1.0.0
  */
 
-namespace Flexic\DataProvider\Internet;
+namespace Flexic\DataProvider\Code;
 
 use Flexic\DataProvider\AbstractProvider;
 
 final class HtmlProvider extends AbstractProvider
 {
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function arbitrary(): \Generator
+    {
+        yield from self::provideDataForValues(self::values());
+    }
+
     /**
      * @return \Generator<string, array{0: string}>
      */
