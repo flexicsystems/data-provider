@@ -27,7 +27,7 @@ final class LanguageProviderTest extends AbstractTestCase
         $value = TestUtil::string(\Flexic\DataProvider\International\LanguageProvider::locale());
 
         self::assertGreaterThan(2, \mb_strlen($value));
-        self::assertLessThanOrEqual(5, \mb_strlen($value));
+        self::assertLessThanOrEqual(6, \mb_strlen($value));
         self::assertMatchesRegularExpression('/(([a-zA-Z]+)(-[a-zA-Z]+)?)/', $value);
     }
 
