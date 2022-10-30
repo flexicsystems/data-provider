@@ -37,7 +37,6 @@ final class MonthProviderTest extends AbstractTestCase
         self::assertIsString($value);
         self::assertContains($value, \Flexic\DataProvider\DateTime\MonthProvider::values());
 
-
         $monthNumber = \date('m', \strtotime(\sprintf('%s %s', $value, (new \DateTimeImmutable('now'))->format('Y'))));
 
         self::assertGreaterThan((new \DateTimeImmutable('now'))->format('m'), $monthNumber);
