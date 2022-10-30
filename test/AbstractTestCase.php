@@ -73,7 +73,7 @@ abstract class AbstractTestCase extends Framework\TestCase
     {
         self::assertThat(
             $actual,
-            new Framework\Constraint\GreaterThan((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
+            self::greaterThanOrEqual((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
             $message,
         );
     }
@@ -82,7 +82,7 @@ abstract class AbstractTestCase extends Framework\TestCase
     {
         self::assertThat(
             $actual,
-            new Framework\Constraint\LessThan((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
+            self::lessThanOrEqual((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
             $message,
         );
     }

@@ -28,6 +28,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-100 years', $value);
         self::assertIsBefore('+100 years', $value);
+        self::assertIsInt($value);
     }
 
     public function testCurrentTimestamp(): void
@@ -36,6 +37,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-1 second', $value);
         self::assertIsBefore('+1 second', $value);
+        self::assertIsInt($value);
     }
 
     public function testVeryNearFutureTimestamp(): void
@@ -44,6 +46,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('+1 day', $value);
         self::assertIsBefore('+2 days', $value);
+        self::assertIsInt($value);
     }
 
     public function testNearFutureTimestamp(): void
@@ -52,6 +55,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('+2 days', $value);
         self::assertIsBefore('+1 week', $value);
+        self::assertIsInt($value);
     }
 
     public function testFutureTimestamp(): void
@@ -60,6 +64,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('+1 week', $value);
         self::assertIsBefore('+1 year', $value);
+        self::assertIsInt($value);
     }
 
     public function testFarFutureTimestamp(): void
@@ -68,6 +73,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('+1 year', $value);
         self::assertIsBefore('+10 years', $value);
+        self::assertIsInt($value);
     }
 
     public function testVeryFarFutureTimestamp(): void
@@ -76,6 +82,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('+10 years', $value);
         self::assertIsBefore('+100 years', $value);
+        self::assertIsInt($value);
     }
 
     public function testVeryNearHistoryTimestamp(): void
@@ -84,6 +91,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-2 days', $value);
         self::assertIsBefore('-1 day', $value);
+        self::assertIsInt($value);
     }
 
     public function testNearHistoryTimestamp(): void
@@ -92,6 +100,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-1 week', $value);
         self::assertIsBefore('-2 days', $value);
+        self::assertIsInt($value);
     }
 
     public function testHistoryTimestamp(): void
@@ -100,6 +109,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-1 year', $value);
         self::assertIsBefore('-1 week', $value);
+        self::assertIsInt($value);
     }
 
     public function testFarHistoryTimestamp(): void
@@ -108,6 +118,7 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-10 years', $value);
         self::assertIsBefore('-1 year', $value);
+        self::assertIsInt($value);
     }
 
     public function testVeryFarHistoryTimestamp(): void
@@ -116,5 +127,6 @@ final class TimestampProviderTest extends AbstractTestCase
 
         self::assertIsAfter('-100 years', $value);
         self::assertIsBefore('-10 years', $value);
+        self::assertIsInt($value);
     }
 }

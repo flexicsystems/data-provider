@@ -29,6 +29,7 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testNow(): void
@@ -38,6 +39,7 @@ final class DateStringProviderTest extends AbstractTestCase
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
         self::assertSame((new \DateTimeImmutable('now'))->format('F j, Y'), $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testVeryNearFuture(): void
@@ -46,8 +48,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsAfter('now', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsBefore('+2 days', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('now', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsBefore('+2 days', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testNearFuture(): void
@@ -56,8 +59,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsAfter('+2 days', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsBefore('+1 week', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('+2 days', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsBefore('+1 week', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testFuture(): void
@@ -66,8 +70,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsAfter('+1 week', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsBefore('+1 year', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('+1 week', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsBefore('+1 year', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testFarFuture(): void
@@ -76,8 +81,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsAfter('+1 year', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsBefore('+10 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('+1 year', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsBefore('+10 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testVeryFarFuture(): void
@@ -86,8 +92,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsAfter('+10 years', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsBefore('+100 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsAfter('+10 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsBefore('+100 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testVeryNearHistory(): void
@@ -96,8 +103,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsBefore('-1 day', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsAfter('-2 days', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testNearHistory(): void
@@ -106,8 +114,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsBefore('-2 days', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsAfter('-1 week', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('-2 days', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsAfter('-1 week', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testHistory(): void
@@ -116,8 +125,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsBefore('-1 week', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsAfter('-1 year', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('-1 week', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsAfter('-1 year', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testFarHistory(): void
@@ -126,8 +136,9 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsBefore('-1 year', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsAfter('-10 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('-1 year', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsAfter('-10 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 
     public function testVeryFarHistory(): void
@@ -136,7 +147,8 @@ final class DateStringProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/(([a-zA-Z]+) ([0-9]{1,2}, ([0-9]{4})))/', $value);
-        self::assertIsBefore('-10 years', (new \DateTimeImmutable($value))->getTimestamp());
-        self::assertIsAfter('-100 years', (new \DateTimeImmutable($value))->getTimestamp());
+        self::assertIsBefore('-10 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertIsAfter('-100 years', \DateTimeImmutable::createFromFormat('!F j, Y', $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!F j, Y', $value));
     }
 }
