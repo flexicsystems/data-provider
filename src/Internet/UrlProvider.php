@@ -100,7 +100,7 @@ final class UrlProvider extends AbstractProvider
 
     public static function values(
         bool $suffix = false,
-        bool $queryParameter = false,
+        bool $queryParameter = false
     ): array {
         return [
             'url-short' => self::random(1, $suffix, $queryParameter),
@@ -114,7 +114,7 @@ final class UrlProvider extends AbstractProvider
     public static function random(
         int $length,
         bool $suffix = false,
-        bool $queryParameter = false,
+        bool $queryParameter = false
     ): string {
         $faker = self::faker();
 
