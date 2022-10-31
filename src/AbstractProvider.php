@@ -14,7 +14,7 @@ namespace Flexic\DataProvider;
 
 abstract class AbstractProvider extends \Ergebnis\DataProvider\AbstractProvider
 {
-    public static function provideMultipleDataForValues(array $values): \Generator
+    final protected static function provideMultipleDataForValues(array $values): \Generator
     {
         if ([] === $values) {
             throw \Ergebnis\DataProvider\Exception\EmptyValues::create();
