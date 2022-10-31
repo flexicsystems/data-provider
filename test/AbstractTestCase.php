@@ -105,7 +105,7 @@ abstract class AbstractTestCase extends Framework\TestCase
             $actual,
             self::logicalAnd(
                 self::greaterThanOrEqual($expectedMin),
-                self::lessThanOrEqual($expectedMax)
+                self::lessThanOrEqual($expectedMax),
             ),
             $message,
         );

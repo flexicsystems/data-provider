@@ -28,7 +28,7 @@ final class CreditCardTypeProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThanOrEqual(3, \strlen($value));
+        self::assertGreaterThanOrEqual(3, \mb_strlen($value));
         self::assertStringContainsOnly('/[A-Za-z ]/', $value);
         self::assertContains($value, \Flexic\DataProvider\Payment\CreditCardTypeProvider::values());
     }
