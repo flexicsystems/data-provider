@@ -27,7 +27,7 @@ final class CreditCardTypeProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function values(): array
+    public static function values(): array
     {
         return [
             'type-visa' => 'Visa',
