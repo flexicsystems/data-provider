@@ -14,7 +14,6 @@ namespace Flexic\DataProvider\Test\Miscellaneous;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
 use Flexic\DataProvider\Test\TestUtil;
-use PHPUnit\Framework\Constraint\IsIdentical;
 
 /**
  * @internal
