@@ -40,7 +40,7 @@ final class SwiftBicProvider extends AbstractProvider
     public static function valid(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return $key === 'swift-valid';
+            return 'swift-valid' === $key;
         });
     }
 
@@ -52,7 +52,7 @@ final class SwiftBicProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'swift-invalid' => \substr($faker->swiftBicNumber, 0, 7),
+            'swift-invalid' => \mb_substr($faker->swiftBicNumber, 0, 7),
             'swift-valid' => $faker->swiftBicNumber(),
         ];
     }

@@ -30,7 +30,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     private static function visa(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 0 === strpos($key, 'number-visa');
+            return \str_starts_with($key, 'number-visa');
         });
     }
 
@@ -40,7 +40,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     private static function mastercard(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 0 === strpos($key, 'number-mastercard');
+            return \str_starts_with($key, 'number-mastercard');
         });
     }
 
@@ -50,7 +50,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     private static function americanExpress(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 0 === strpos($key, 'number-american-express');
+            return \str_starts_with($key, 'number-american-express');
         });
     }
 
@@ -60,7 +60,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     private static function discover(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 0 === strpos($key, 'number-discover');
+            return \str_starts_with($key, 'number-discover');
         });
     }
 
@@ -70,7 +70,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     private static function jcb(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 0 === strpos($key, 'number-jcb');
+            return \str_starts_with($key, 'number-jcb');
         });
     }
 
