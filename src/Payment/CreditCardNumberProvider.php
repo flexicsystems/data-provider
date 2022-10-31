@@ -27,7 +27,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function visa(): \Generator
+    public static function visa(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return \str_starts_with($key, 'number-visa');
@@ -37,7 +37,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function mastercard(): \Generator
+    public static function mastercard(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return \str_starts_with($key, 'number-mastercard');
@@ -47,7 +47,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function americanExpress(): \Generator
+    public static function americanExpress(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return \str_starts_with($key, 'number-american-express');
@@ -57,7 +57,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function discover(): \Generator
+    public static function discover(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return \str_starts_with($key, 'number-discover');
@@ -67,7 +67,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function jcb(): \Generator
+    public static function jcb(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
             return \str_starts_with($key, 'number-jcb');
@@ -77,7 +77,7 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return array<string, string>
      */
-    private static function values(): array
+    public static function values(): array
     {
         $faker = self::faker();
 
