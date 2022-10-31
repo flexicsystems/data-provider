@@ -18,15 +18,17 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\Payment\CurrencyProvider
+ * @covers \Flexic\DataProvider\Payment\CurrencyCodeProvider
  */
-final class CurrencyProviderTest extends AbstractTestCase
+final class CurrencyCodeProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\Payment\CurrencyProvider::arbitrary());
+        $value = TestUtil::string(\Flexic\DataProvider\Payment\CurrencyCodeProvider::arbitrary());
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
+        self::assertLength(3, $value);
+        self::assertStringContainsOnly('/[A-Z]/', $value);
     }
 }
