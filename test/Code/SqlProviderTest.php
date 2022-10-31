@@ -20,8 +20,8 @@ use PHPUnit\Framework\Constraint\StringStartsWith;
  * @internal
  *
  * @covers \Flexic\DataProvider\Code\SqlProvider
- * @covers \Flexic\DataProvider\Generator\SqlGenerator
  * @covers \Flexic\DataProvider\Generator\AbstractGenerator
+ * @covers \Flexic\DataProvider\Generator\SqlGenerator
  */
 final class SqlProviderTest extends AbstractTestCase
 {
