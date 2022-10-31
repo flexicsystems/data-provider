@@ -20,6 +20,7 @@ use PHPUnit\Framework\Constraint\RegularExpression;
  * @internal
  *
  * @covers \Flexic\DataProvider\Id\UuidProvider
+ * @covers \Flexic\DataProvider\AbstractProvider
  */
 final class UuidProviderTest extends AbstractTestCase
 {
