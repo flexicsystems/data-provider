@@ -38,7 +38,6 @@ final class Rfc3339ExtendedProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertSame((new \DateTimeImmutable('now'))->format(\DateTime::RFC3339_EXTENDED), $value);
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
     }
 
