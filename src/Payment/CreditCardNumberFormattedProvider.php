@@ -14,7 +14,7 @@ namespace Flexic\DataProvider\Payment;
 
 use Flexic\DataProvider\AbstractProvider;
 
-final class CreditCardNumberProvider extends AbstractProvider
+final class CreditCardNumberFormattedProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -82,11 +82,11 @@ final class CreditCardNumberProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'number-visa' => $faker->creditCardNumber('Visa'),
-            'number-mastercard' => $faker->creditCardNumber('MasterCard'),
-            'number-american-express' => $faker->creditCardNumber('American Express'),
-            'number-discover-card' => $faker->creditCardNumber('Discover Card'),
-            'number-jcb' => $faker->creditCardNumber('JCB'),
+            'number-visa' => $faker->creditCardNumber('Visa', true, '-'),
+            'number-mastercard' => $faker->creditCardNumber('MasterCard', true, '-'),
+            'number-american-express' => $faker->creditCardNumber('American Express', true, '-'),
+            'number-discover-card' => $faker->creditCardNumber('Discover Card', true, '-'),
+            'number-jcb' => $faker->creditCardNumber('JCB', true, '-'),
         ];
     }
 }

@@ -19,15 +19,15 @@ final class CreditCardTypeProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function type(): \Generator
+    public static function arbitrary(): \Generator
     {
-        yield from self::provideMultipleDataForValues(self::values());
+        yield from self::provideDataForValues(self::values());
     }
 
     /**
      * @return array<string, string>
      */
-    private static function values(): array
+    public static function values(): array
     {
         return [
             'type-visa' => 'Visa',

@@ -98,4 +98,16 @@ abstract class AbstractTestCase extends Framework\TestCase
             $message,
         );
     }
+
+    public static function assertIsNumberBetween(int $expectedMin, int $expectedMax, int $actual, string $message = ''): void
+    {
+        self::assertThat(
+            $actual,
+            self::logicalAnd(
+                self::greaterThanOrEqual($expectedMin),
+                self::lessThanOrEqual($expectedMax),
+            ),
+            $message,
+        );
+    }
 }

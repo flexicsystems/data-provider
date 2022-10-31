@@ -14,7 +14,7 @@ namespace Flexic\DataProvider\Payment;
 
 use Flexic\DataProvider\AbstractProvider;
 
-final class IbanProvider extends AbstractProvider
+final class SwiftBicProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: mixed}>
@@ -29,8 +29,8 @@ final class IbanProvider extends AbstractProvider
      */
     public static function invalid(): \Generator
     {
-        yield from self::provideDataForValuesWhere(self::values(), static function (string $iban): bool {
-            return \mb_strpos($iban, 'US') === 0;
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'swift-invalid' === $key;
         });
     }
 
@@ -39,8 +39,8 @@ final class IbanProvider extends AbstractProvider
      */
     public static function valid(): \Generator
     {
-        yield from self::provideDataForValuesWhere(self::values(), static function (string $iban): bool {
-            return \mb_strpos($iban, 'US') !== 0;
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'swift-valid' === $key;
         });
     }
 
@@ -51,11 +51,9 @@ final class IbanProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        // US does not support IBAN, so an IBAN starting with US is invalid.
-        // IBAN in germany has 22 characters. Anything less or more is invalid.
         return [
-            'iban-invalid' => $faker->iban('US', '', $faker->numberBetween(1, 20)),
-            'iban-valid' => $faker->iban('DE', '', 22),
+            'swift-invalid' => \mb_substr($faker->swiftBicNumber, 0, 7),
+            'swift-valid' => $faker->swiftBicNumber(),
         ];
     }
 }
