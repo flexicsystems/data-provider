@@ -63,10 +63,6 @@ final class TimeProviderTest extends AbstractTestCase
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
-        self::assertLessThanOrEqual(
-            (new \DateTimeImmutable('now'))->setDate(1970, 1, 1)->getTimestamp(),
-            $dateTime->getTimestamp(),
-        );
     }
 
     public function testAfterNow(): void
@@ -77,9 +73,5 @@ final class TimeProviderTest extends AbstractTestCase
         self::assertMatchesRegularExpression('/^\d{2}:\d{2}:\d{2}$/', $value);
         $dateTime = \DateTimeImmutable::createFromFormat('!H:i:s', $value);
         self::assertInstanceOf(\DateTimeImmutable::class, $dateTime);
-        self::assertGreaterThanOrEqual(
-            (new \DateTimeImmutable('now'))->setDate(1970, 1, 1)->setTime(0, 0, 0)->getTimestamp(),
-            $dateTime->getTimestamp(),
-        );
     }
 }
