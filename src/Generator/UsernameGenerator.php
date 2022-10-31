@@ -1,8 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Generator;
 
-class UsernameGenerator extends AbstractGenerator
+final class UsernameGenerator extends AbstractGenerator
 {
     private static array $_dividers = ['.', '-', '_', ''];
 
@@ -32,7 +42,7 @@ class UsernameGenerator extends AbstractGenerator
         ];
 
         foreach ($_modifiers as $key => $value) {
-            $format = str_replace(\sprintf('{{%s}}', $key), $value, $format);
+            $format = \str_replace(\sprintf('{{%s}}', $key), $value, $format);
         }
 
         return $format;
@@ -41,13 +51,15 @@ class UsernameGenerator extends AbstractGenerator
     private static function firstName(bool $truncate = false): string
     {
         $faker = self::faker();
-        return $truncate ? \substr($faker->firstName(), 0, $faker->numberBetween(3, 100)): $faker->firstName();
+
+        return $truncate ? \mb_substr($faker->firstName(), 0, $faker->numberBetween(3, 100)) : $faker->firstName();
     }
 
     private static function lastName(bool $truncate = false): string
     {
         $faker = self::faker();
-        return $truncate ? \substr($faker->lastName(), 0, $faker->numberBetween(3, 100)): $faker->lastName();
+
+        return $truncate ? \mb_substr($faker->lastName(), 0, $faker->numberBetween(3, 100)) : $faker->lastName();
     }
 
     private static function number(): int
