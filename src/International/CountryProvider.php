@@ -94,7 +94,6 @@ final class CountryProvider extends AbstractProvider
         });
     }
 
-
     public static function values(): array
     {
         $faker = self::faker();
