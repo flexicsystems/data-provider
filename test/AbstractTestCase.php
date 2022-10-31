@@ -69,7 +69,8 @@ abstract class AbstractTestCase extends Framework\TestCase
         );
     }
 
-    public static function assertIsAfter(string $expected, int $actual, bool $flatTime = false, string $message = ''): void {
+    public static function assertIsAfter(string $expected, int $actual, bool $flatTime = false, string $message = ''): void
+    {
         $datetime = (new \DateTimeImmutable('now'))->modify($expected);
 
         if ($flatTime) {
