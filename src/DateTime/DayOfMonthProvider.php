@@ -47,6 +47,16 @@ final class DayOfMonthProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
+    public static function februaryLeap(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'day-of-month-february-leap' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function march(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -149,19 +159,19 @@ final class DayOfMonthProvider extends AbstractProvider
         $faker = self::faker();
 
         return [
-            'day-of-month-january' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-february' => \str_pad($faker->numberBetween(1, 28), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-february-leap' => \str_pad($faker->numberBetween(1, 29), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-march' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-april' => \str_pad($faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-may' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-june' => \str_pad($faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-july' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-august' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-september' => \str_pad($faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-october' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-november' => \str_pad($faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
-            'day-of-month-december' => \str_pad($faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-january' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-february' => \str_pad((string) $faker->numberBetween(1, 28), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-february-leap' => \str_pad((string) $faker->numberBetween(1, 29), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-march' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-april' => \str_pad((string) $faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-may' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-june' => \str_pad((string) $faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-july' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-august' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-september' => \str_pad((string) $faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-october' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-november' => \str_pad((string) $faker->numberBetween(1, 30), 2, '0', \STR_PAD_LEFT),
+            'day-of-month-december' => \str_pad((string) $faker->numberBetween(1, 31), 2, '0', \STR_PAD_LEFT),
         ];
     }
 }
