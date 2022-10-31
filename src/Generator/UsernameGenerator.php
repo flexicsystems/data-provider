@@ -85,11 +85,12 @@ final class UsernameGenerator extends AbstractGenerator
     private static function domain(): string
     {
         $faker = self::faker();
+
         return $faker->randomElement([$faker->freeEmailDomain(), $faker->domainName(), $faker->safeEmailDomain()]);
     }
 
     private static function company(): string
     {
-        return \strtolower(\str_replace([' ', ',', '.', '#', '+', '*'], '', self::faker()->company()));
+        return \mb_strtolower(\str_replace([' ', ',', '.', '#', '+', '*'], '', self::faker()->company()));
     }
 }
