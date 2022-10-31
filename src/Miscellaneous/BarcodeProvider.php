@@ -19,6 +19,14 @@ final class BarcodeProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
+    public static function arbitrary(): \Generator
+    {
+        yield from self::provideDataForValues(self::values());
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function ean13(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
