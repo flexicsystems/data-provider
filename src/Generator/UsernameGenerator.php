@@ -23,6 +23,13 @@ final class UsernameGenerator extends AbstractGenerator
         '{{firstNameTruncated}}{{number}}', '{{lastNameTruncated}}{{number}}',
         '{{firstName}}{{number}}', '{{lastName}}{{number}}',
         '{{firstNameTruncated}}{{divider}}{{lastNameTruncated}}{{number}}', '{{lastNameTruncated}}{{divider}}{{firstNameTruncated}}{{number}}',
+        '{{firstName}}{{divider}}{{lastName}}{{number}}', '{{lastName}}{{divider}}{{firstName}}{{number}}',
+        '{{firstName}}{{divider}}{{lastName}}{{domain}}', '{{lastName}}{{divider}}{{firstName}}{{domain}}',
+        '{{firstName}}{{lastName}}{{domain}}', '{{lastName}}{{firstName}}{{domain}}',
+        '{{firstName}}{{lastName}}{{number}}{{domain}}', '{{lastName}}{{firstName}}{{number}}{{domain}}',
+        '{{firstName}}{{number}}@{{domain}}', '{{lastName}}{{number}}@{{domain}}',
+        '{{firstName}}{{lastName}}@{{company}}.{{domain}}', '{{lastName}}{{firstName}}@{{company}}.{{domain}}',
+        '{{firstName}}{{divider}}{{lastName}}@{{company}}.{{domain}}', '{{lastName}}{{divider}}{{firstName}}@{{company}}.{{domain}}',
     ];
 
     public static function generate(): string
@@ -39,6 +46,9 @@ final class UsernameGenerator extends AbstractGenerator
             'lastNameTruncated' => self::lastName(true),
             'number' => self::number(),
             'divider' => self::divider(),
+            'email' => self::divider(),
+            'domain' => self::domain(),
+            'company' => self::company(),
         ];
 
         foreach ($_modifiers as $key => $value) {
@@ -70,5 +80,16 @@ final class UsernameGenerator extends AbstractGenerator
     private static function divider(): string
     {
         return self::faker()->randomElement(self::$_dividers);
+    }
+
+    private static function domain(): string
+    {
+        $faker = self::faker();
+        return $faker->randomElement([$faker->freeEmailDomain(), $faker->domainName(), $faker->safeEmailDomain()]);
+    }
+
+    private static function company(): string
+    {
+        return \strtolower(\str_replace([' ', ',', '.', '#', '+', '*'], '', self::faker()->company()));
     }
 }
