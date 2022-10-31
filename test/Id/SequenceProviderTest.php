@@ -19,6 +19,7 @@ use Flexic\DataProvider\Test\TestUtil;
  * @internal
  *
  * @covers \Flexic\DataProvider\Id\SequenceProvider
+ * @covers \Flexic\DataProvider\AbstractProvider
  */
 final class SequenceProviderTest extends AbstractTestCase
 {
