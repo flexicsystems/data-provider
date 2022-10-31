@@ -42,7 +42,7 @@ final class UsernameGenerator extends AbstractGenerator
         ];
 
         foreach ($_modifiers as $key => $value) {
-            $format = \str_replace(\sprintf('{{%s}}', $key), $value, $format);
+            $format = \str_replace(\sprintf('{{%s}}', $key), (string) $value, $format);
         }
 
         return $format;
