@@ -19,50 +19,58 @@ final class CreditCardNumberProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function visa(): \Generator
+    public static function arbitrary(): \Generator
+    {
+        yield from self::provideDataForValues(self::values());
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private static function visa(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'number-visa' === $key;
+            return 0 === strpos($key, 'number-visa');
         });
     }
 
     /**
-     * @return \Generator<string, array{0: string}>
+     * @return array<string, string>
      */
-    public static function visaFormatted(): \Generator
+    private static function mastercard(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'number-visa-formatted' === $key;
+            return 0 === strpos($key, 'number-mastercard');
         });
     }
 
     /**
-     * @return \Generator<string, array{0: string}>
+     * @return array<string, string>
      */
-    public static function masterCard(): \Generator
+    private static function americanExpress(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'number-mastercard' === $key;
+            return 0 === strpos($key, 'number-american-express');
         });
     }
 
     /**
-     * @return \Generator<string, array{0: string}>
+     * @return array<string, string>
      */
-    public static function masterCardFormatted(): \Generator
+    private static function discover(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'number-mastercard-formatted' === $key;
+            return 0 === strpos($key, 'number-discover');
         });
     }
 
     /**
-     * @return \Generator<string, array{0: string}>
+     * @return array<string, string>
      */
-    public static function number(): \Generator
+    private static function jcb(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'number' === $key;
+            return 0 === strpos($key, 'number-jcb');
         });
     }
 
@@ -73,14 +81,12 @@ final class CreditCardNumberProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        $faker->creditCardNumber();
-
         return [
             'number-visa' => $faker->creditCardNumber('Visa'),
-            'number-visa-formatted' => $faker->creditCardNumber('Visa', true),
             'number-mastercard' => $faker->creditCardNumber('MasterCard'),
-            'number-mastercard-formatted' => $faker->creditCardNumber('MasterCard', true),
-            'number' => $faker->creditCardNumber(),
+            'number-american-express' => $faker->creditCardNumber('American Express'),
+            'number-discover-card' => $faker->creditCardNumber('Discover Card'),
+            'number-jcb' => $faker->creditCardNumber('JCB'),
         ];
     }
 }
