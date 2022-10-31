@@ -18,8 +18,8 @@ use Flexic\DataProvider\Test\TestUtil;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\Id\SequenceProvider
  * @covers \Flexic\DataProvider\AbstractProvider
+ * @covers \Flexic\DataProvider\Id\SequenceProvider
  */
 final class SequenceProviderTest extends AbstractTestCase
 {
