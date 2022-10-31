@@ -19,51 +19,51 @@ use PHPUnit\Framework\Constraint\RegularExpression;
 /**
  * @internal
  *
- * @covers \Flexic\DataProvider\Code\HtmlProvider
+ * @covers \Flexic\DataProvider\Code\CssProvider
  */
-final class HtmlProviderTest extends AbstractTestCase
+final class CssProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::arbitrary());
+        $value = TestUtil::string(\Flexic\DataProvider\Code\CssProvider::arbitrary());
 
         self::assertIsString($value);
         self::assertNotEmpty($value);
-        self::assertIsHtml($value);
+        self::assertIsCss($value);
     }
 
     public function testNormal(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::normal());
+        $value = TestUtil::string(\Flexic\DataProvider\Code\CssProvider::normal());
 
         self::assertIsString($value);
         self::assertNotEmpty($value);
-        self::assertIsHtml($value);
+        self::assertIsCss($value);
     }
 
     public function testSimple(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::simple());
+        $value = TestUtil::string(\Flexic\DataProvider\Code\CssProvider::simple());
 
         self::assertIsString($value);
         self::assertNotEmpty($value);
-        self::assertIsHtml($value);
+        self::assertIsCss($value);
     }
 
     public function testComplex(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\Code\HtmlProvider::complex());
+        $value = TestUtil::string(\Flexic\DataProvider\Code\CssProvider::complex());
 
         self::assertIsString($value);
         self::assertNotEmpty($value);
-        self::assertIsHtml($value);
+        self::assertIsCss($value);
     }
 
-    public static function assertIsHtml(string $actual, string $message = ''): void
+    public static function assertIsCss(string $actual, string $message = ''): void
     {
         self::assertThat(
             $actual,
-            new RegularExpression('/<html><head>(.*)<\/head><body>(.*)<\/body><\/html>/'),
+            new RegularExpression('/([.#])([a-zA-Z0-9]+){(([a-zA-Z0-9\-]+):([a-zA-Z0-9 \-#%]+);)+}/'),
             $message,
         );
     }
