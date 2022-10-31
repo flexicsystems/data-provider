@@ -27,10 +27,70 @@ final class CountryCodeAlpha3Provider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
-    public static function countryCodeAlpha2(): \Generator
+    public static function africa(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'country-code-alpha-2' === $key;
+            return 'country-code-africa' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function asia(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-asia' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function europe(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-europe' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function america(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-america' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function oceania(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-oceania' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function antarctica(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-antarctica' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function australia(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-code-australia' === $key;
         });
     }
 

@@ -24,6 +24,77 @@ final class CountryProvider extends AbstractProvider
         yield from self::provideDataForValues(self::values());
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function africa(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-africa' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function asia(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-asia' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function europe(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-europe' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function america(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-america' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function oceania(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-oceania' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function antarctica(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-antarctica' === $key;
+        });
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
+    public static function australia(): \Generator
+    {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'country-australia' === $key;
+        });
+    }
+
+
     public static function values(): array
     {
         $faker = self::faker();
