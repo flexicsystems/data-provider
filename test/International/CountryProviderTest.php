@@ -28,7 +28,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testAfrica(): void
@@ -37,7 +37,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testAsia(): void
@@ -46,7 +46,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testEurope(): void
@@ -55,7 +55,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testAmerica(): void
@@ -64,7 +64,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testOceania(): void
@@ -73,7 +73,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testAntarctica(): void
@@ -82,7 +82,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
     public function testAustralia(): void
@@ -91,7 +91,7 @@ final class CountryProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertIsString($value);
-        self::assertGreaterThan(1, \strlen($value));
+        self::assertGreaterThan(1, \mb_strlen($value));
         self::assertSame('Australia', $value);
     }
 }
