@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\DateTime;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class DayTimeProvider extends AbstractProvider
+final class DayTimeProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: string}>
@@ -20,7 +30,7 @@ class DayTimeProvider extends AbstractProvider
     public static function am(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'am' === $key;
+            return 'day-time-am' === $key;
         });
     }
 
@@ -30,7 +40,7 @@ class DayTimeProvider extends AbstractProvider
     public static function pm(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return 'pm' === $key;
+            return 'day-time-pm' === $key;
         });
     }
 
