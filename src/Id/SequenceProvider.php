@@ -19,6 +19,15 @@ final class SequenceProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
+    public static function arbitrary(): \Generator
+    {
+        $faker = self::faker();
+        yield from self::provideDataForValues(self::values($faker->numberBetween(2, 100000)));
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function short(): \Generator
     {
         yield from self::provideMultipleDataForValues(

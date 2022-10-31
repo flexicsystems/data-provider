@@ -16,6 +16,9 @@ use Flexic\DataProvider\AbstractProvider;
 
 final class CompressionProvider extends AbstractProvider
 {
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function arbitrary(): \Generator
     {
         yield from self::provideDataForValues(self::values());
