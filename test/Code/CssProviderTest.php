@@ -20,6 +20,8 @@ use PHPUnit\Framework\Constraint\RegularExpression;
  * @internal
  *
  * @covers \Flexic\DataProvider\Code\CssProvider
+ * @covers \Flexic\DataProvider\Generator\CssGenerator
+ * @covers \Flexic\DataProvider\Generator\AbstractGenerator
  */
 final class CssProviderTest extends AbstractTestCase
 {

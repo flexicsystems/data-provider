@@ -60,6 +60,66 @@ final class SqlGenerator extends AbstractGenerator
         );
     }
 
+    public static function delete(): string
+    {
+        $faker = self::faker();
+
+        $fields = $faker->words($faker->randomNumber(1, 25), false);
+
+        return \sprintf(
+            'DELETE FROM %s%s',
+            $faker->word(),
+            $faker->boolean() ? \sprintf(' %s', self::where($fields)) : '',
+        );
+    }
+
+    public static function create(): string
+    {
+        $faker = self::faker();
+
+        $fields = $faker->words($faker->randomNumber(1, 25), false);
+
+        return \sprintf(
+            'CREATE TABLE %s (%s)',
+            $faker->word(),
+            \implode(', ', \array_map(static function (string $field) use ($faker) {
+                return \sprintf('%s %s', $field, $faker->randomElement(['INT', 'VARCHAR(255)', 'TEXT']));
+            }, $fields)),
+        );
+    }
+
+    public static function drop(): string
+    {
+        $faker = self::faker();
+
+        return \sprintf(
+            'DROP TABLE %s',
+            $faker->word(),
+        );
+    }
+
+    public static function alter(): string
+    {
+        $faker = self::faker();
+
+        return \sprintf(
+            'ALTER TABLE %s ADD %s %s',
+            $faker->word(),
+            $faker->word(),
+            $faker->randomElement(['INT', 'VARCHAR(255)', 'TEXT']),
+        );
+    }
+
+    public static function truncate(): string
+    {
+        $faker = self::faker();
+
+        return \sprintf(
+            'TRUNCATE TABLE %s',
+            $faker->word(),
+        );
+    }
+
     protected static function where(array $fields = []): string
     {
         $faker = self::faker();
@@ -105,10 +165,6 @@ final class SqlGenerator extends AbstractGenerator
                         $operator = $faker->randomElement(['IN', 'NOT IN']);
 
                         break;
-
-                    default:
-                        $value = $faker->word();
-                        $operator = $faker->randomElement(['=', '!=']);
                 }
 
                 return \sprintf('%s %s %s', $field, $operator, $value);
