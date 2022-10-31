@@ -29,7 +29,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Flexic\\DataProvider\\": "src/"
+      "Flexic\\DataProvider\\": "src/",
+      "Flexic\\DataProvider\\Generator\\": "generator/"
     }
   },
   "autoload-dev": {
