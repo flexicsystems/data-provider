@@ -1,14 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Generator;
 
-class CssGenerator extends AbstractGenerator
+final class CssGenerator extends AbstractGenerator
 {
     public static function random(int $min, int $max): string
     {
         $faker = self::faker();
 
         $objects = [];
+
         for ($i = 0; $faker->numberBetween($min, $max) > $i; ++$i) {
             $object = \sprintf('%s%s', $faker->randomElement(['.', '#']), $faker->word);
             $objects[$object] = [];
@@ -26,11 +37,12 @@ class CssGenerator extends AbstractGenerator
                 },
                 \array_keys($objects),
                 $objects,
-            )
+            ),
         );
     }
 
-    protected static function statement(): string {
+    protected static function statement(): string
+    {
         $faker = self::faker();
 
         return $faker->randomElement([
