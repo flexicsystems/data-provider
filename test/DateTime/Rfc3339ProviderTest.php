@@ -29,7 +29,7 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testNow(): void
@@ -38,8 +38,8 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertSame((new \DateTimeImmutable('now'))->format(\DateTime::RFC3339_EXTENDED), $value);
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertSame((new \DateTimeImmutable('now'))->format(\DateTime::RFC3339), $value);
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testVeryNearFuture(): void
@@ -48,9 +48,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 day', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsBefore('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsAfter('+1 day', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsBefore('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testNearFuture(): void
@@ -59,9 +59,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsBefore('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsAfter('+2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsBefore('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testFuture(): void
@@ -70,9 +70,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsBefore('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsAfter('+1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsBefore('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testFarFuture(): void
@@ -81,9 +81,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsBefore('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsAfter('+1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsBefore('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testVeryFarFuture(): void
@@ -92,9 +92,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsAfter('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsBefore('+100 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsAfter('+10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsBefore('+100 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testVeryNearHistory(): void
@@ -103,9 +103,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testNearHistory(): void
@@ -114,9 +114,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsAfter('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsBefore('-2 days', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsAfter('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testHistory(): void
@@ -125,9 +125,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsAfter('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsBefore('-1 week', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsAfter('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testFarHistory(): void
@@ -136,9 +136,9 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsAfter('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsBefore('-1 year', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsAfter('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 
     public function testVeryFarHistory(): void
@@ -147,8 +147,8 @@ final class Rfc3339ProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}\+[0-9]{2}:[0-9]{2})/', $value);
-        self::assertIsBefore('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertIsAfter('-100 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value)->getTimestamp());
-        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339_EXTENDED, $value));
+        self::assertIsBefore('-10 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertIsAfter('-100 years', \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value)->getTimestamp());
+        self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat(\DateTime::RFC3339, $value));
     }
 }

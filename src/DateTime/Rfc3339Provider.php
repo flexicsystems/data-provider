@@ -135,7 +135,7 @@ final class Rfc3339Provider extends AbstractDateProvider
     public static function values(): array
     {
         return \array_map(static function (\DateTimeImmutable $value): string {
-            return $value->format(\DateTime::RFC3339_EXTENDED);
+            return $value->format(\DateTime::RFC3339);
         }, parent::generatedValues('rfc3339'));
     }
 }
