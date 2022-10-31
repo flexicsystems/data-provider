@@ -22,6 +22,13 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class VersionProviderTest extends AbstractTestCase
 {
+    public function testArbitraryIsValid(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\VersionProvider::arbitrary());
+
+        self::assertMatchesRegularExpression('/^[0-9]+\.[0-9]+\.[0-9]+([+-][a-zA-Z0-9.-]+)?([+-][a-zA-Z0-9.-]+)?$/', $value);
+    }
+
     public function testVersionIsValid(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\VersionProvider::version());

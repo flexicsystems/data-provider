@@ -14,6 +14,7 @@ namespace Flexic\DataProvider\Test\Miscellaneous;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
 use Flexic\DataProvider\Test\TestUtil;
+use PHPUnit\Framework\Constraint\IsIdentical;
 
 /**
  * @internal
@@ -22,6 +23,28 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class HashProviderTest extends AbstractTestCase
 {
+    public function testArbitraryIsValid(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\HashProvider::arbitrary());
+
+        self::assertNotEmpty($value);
+        self::assertThat(
+            \mb_strlen($value),
+            self::logicalOr(
+                new IsIdentical(32),
+                new IsIdentical(40),
+                new IsIdentical(48),
+                new IsIdentical(56),
+                new IsIdentical(64),
+                new IsIdentical(80),
+                new IsIdentical(96),
+                new IsIdentical(128),
+            ),
+        );
+        self::assertStringContainsOnly('/[a-f0-9]/i', $value);
+        self::assertMatchesRegularExpression('/^[a-f0-9]{32,128}$/i', $value);
+    }
+
     public function testIfMd2IsValid(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\HashProvider::md2());

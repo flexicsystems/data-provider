@@ -14,6 +14,7 @@ namespace Flexic\DataProvider\Test\Miscellaneous;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
 use Flexic\DataProvider\Test\TestUtil;
+use PHPUnit\Framework\Constraint\IsIdentical;
 
 /**
  * @internal
@@ -22,6 +23,23 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class BarcodeProviderTest extends AbstractTestCase
 {
+    public function testArbitrary(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\BarcodeProvider::arbitrary());
+
+        self::assertIsString($value);
+        self::assertThat(
+            \mb_strlen($value),
+            self::logicalOr(
+                new IsIdentical(13),
+                new IsIdentical(8),
+                new IsIdentical(10),
+            ),
+        );
+        self::assertMatchesRegularExpression('/^[0-9A-Za-z]{8,13}$/', $value);
+        self::assertStringContainsOnly('/[0-9A-Za-z]/i', $value);
+    }
+
     public function testEan13IsValid(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\Miscellaneous\BarcodeProvider::ean13());

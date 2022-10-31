@@ -19,13 +19,19 @@ final class VersionProvider extends AbstractProvider
     /**
      * @return \Generator<string, array{0: string}>
      */
+    public static function arbitrary(): \Generator
+    {
+        yield from self::provideDataForValues(self::values());
+    }
+
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function version(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'version' => $faker->semver(false, false),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'version' === $key;
+        });
     }
 
     /**
@@ -33,11 +39,9 @@ final class VersionProvider extends AbstractProvider
      */
     public static function preRelease(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'version-pre-release' => $faker->semver(true, false),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'version-pre-release' === $key;
+        });
     }
 
     /**
@@ -45,11 +49,9 @@ final class VersionProvider extends AbstractProvider
      */
     public static function build(): \Generator
     {
-        $faker = self::faker();
-
-        yield from self::provideDataForValues([
-            'version-build' => $faker->semver(false, true),
-        ]);
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'version-build' === $key;
+        });
     }
 
     /**
@@ -57,10 +59,20 @@ final class VersionProvider extends AbstractProvider
      */
     public static function preReleaseBuild(): \Generator
     {
+        yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
+            return 'version-pre-release-build' === $key;
+        });
+    }
+
+    public static function values(): array
+    {
         $faker = self::faker();
 
-        yield from self::provideDataForValues([
+        return [
+            'version' => $faker->semver(false, false),
+            'version-pre-release' => $faker->semver(true, false),
+            'version-build' => $faker->semver(false, true),
             'version-pre-release-build' => $faker->semver(true, true),
-        ]);
+        ];
     }
 }
