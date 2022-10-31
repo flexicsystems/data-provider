@@ -39,7 +39,7 @@ final class HashProviderTest extends AbstractTestCase
                 new IsIdentical(80),
                 new IsIdentical(96),
                 new IsIdentical(128),
-            )
+            ),
         );
         self::assertStringContainsOnly('/[a-f0-9]/i', $value);
         self::assertMatchesRegularExpression('/^[a-f0-9]{32,128}$/i', $value);
