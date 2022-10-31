@@ -47,7 +47,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
                 self::stringStartsWith('4485'),
                 self::stringStartsWith('4716'),
                 self::stringStartsWith('4'),
-            )
+            ),
         );
     }
 
@@ -71,7 +71,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
                 self::stringStartsWith('53'),
                 self::stringStartsWith('54'),
                 self::stringStartsWith('55'),
-            )
+            ),
         );
     }
 
@@ -86,7 +86,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
             self::logicalOr(
                 self::stringStartsWith('34'),
                 self::stringStartsWith('37'),
-            )
+            ),
         );
     }
 
@@ -100,7 +100,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
             $value,
             self::logicalOr(
                 self::stringStartsWith('6011'),
-            )
+            ),
         );
     }
 
@@ -115,7 +115,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
             self::logicalOr(
                 self::stringStartsWith('3528'),
                 self::stringStartsWith('3528'),
-            )
+            ),
         );
     }
 }

@@ -48,7 +48,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
                 self::stringStartsWith('4485'),
                 self::stringStartsWith('4716'),
                 self::stringStartsWith('4'),
-            )
+            ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
     }
@@ -73,7 +73,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
                 self::stringStartsWith('53'),
                 self::stringStartsWith('54'),
                 self::stringStartsWith('55'),
-            )
+            ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
     }
@@ -89,7 +89,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
             self::logicalOr(
                 self::stringStartsWith('34'),
                 self::stringStartsWith('37'),
-            )
+            ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
     }
@@ -104,7 +104,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
             $value,
             self::logicalOr(
                 self::stringStartsWith('6011'),
-            )
+            ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
     }
@@ -120,7 +120,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
             self::logicalOr(
                 self::stringStartsWith('3528'),
                 self::stringStartsWith('3528'),
-            )
+            ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
     }
