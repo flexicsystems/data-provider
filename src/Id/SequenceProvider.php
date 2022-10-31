@@ -23,7 +23,7 @@ final class SequenceProvider extends AbstractProvider
     {
         $faker = self::faker();
 
-        yield from self::provideDataForValues(self::values($faker->numberBetween(2, 100000)));
+        yield from self::provideMultipleDataForValues(self::values($faker->numberBetween(2, 100000)));
     }
 
     /**

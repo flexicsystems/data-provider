@@ -23,6 +23,13 @@ use PHPUnit\Framework\Constraint\RegularExpression;
  */
 final class UuidProviderTest extends AbstractTestCase
 {
+    public function testArbitrary(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Id\UuidProvider::arbitrary());
+
+        self::assertMatchesRegularExpression('/^[0-9A-Fa-z]{8}-[0-9A-Fa-z]{4}-[1-6][0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/i', $value);
+    }
+
     public function testV1(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\Id\UuidProvider::v1());

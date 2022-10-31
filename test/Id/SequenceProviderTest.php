@@ -22,6 +22,14 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class SequenceProviderTest extends AbstractTestCase
 {
+    public function testArbitrarySequence(): void
+    {
+        $value = TestUtil::array(\Flexic\DataProvider\Id\SequenceProvider::arbitrary());
+
+        self::assertGreaterThanOrEqual(2, \count($value));
+        self::assertLessThanOrEqual(100000, \count($value));
+    }
+
     public function testShortSequence(): void
     {
         $value = TestUtil::array(\Flexic\DataProvider\Id\SequenceProvider::short());
