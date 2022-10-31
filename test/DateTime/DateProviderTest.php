@@ -103,8 +103,8 @@ final class DateProviderTest extends AbstractTestCase
 
         self::assertNotEmpty($value);
         self::assertMatchesRegularExpression('/([0-9]{4}-[0-9]{2}-[0-9]{2})/', $value);
-        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat('!Y-m-d', $value)->getTimestamp());
-        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat('!Y-m-d', $value)->getTimestamp());
+        self::assertIsBefore('-1 day', \DateTimeImmutable::createFromFormat('!Y-m-d', $value)->getTimestamp(), true);
+        self::assertIsAfter('-2 days', \DateTimeImmutable::createFromFormat('!Y-m-d', $value)->getTimestamp(), true);
         self::assertInstanceOf(\DateTimeImmutable::class, \DateTimeImmutable::createFromFormat('!Y-m-d', $value));
     }
 

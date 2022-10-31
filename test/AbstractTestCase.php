@@ -69,20 +69,31 @@ abstract class AbstractTestCase extends Framework\TestCase
         );
     }
 
-    public static function assertIsAfter(string $expected, int $actual, string $message = ''): void
-    {
+    public static function assertIsAfter(string $expected, int $actual, bool $flatTime = false, string $message = ''): void {
+        $datetime = (new \DateTimeImmutable('now'))->modify($expected);
+
+        if ($flatTime) {
+            $datetime = $datetime->setTime(0, 0, 0);
+        }
+
         self::assertThat(
             $actual,
-            self::greaterThanOrEqual((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
+            self::greaterThanOrEqual($datetime->getTimestamp()),
             $message,
         );
     }
 
-    public static function assertIsBefore(string $expected, int $actual, string $message = ''): void
+    public static function assertIsBefore(string $expected, int $actual, bool $flatTime = false, string $message = ''): void
     {
+        $datetime = (new \DateTimeImmutable('now'))->modify($expected);
+
+        if ($flatTime) {
+            $datetime = $datetime->setTime(0, 0, 0);
+        }
+
         self::assertThat(
             $actual,
-            self::lessThanOrEqual((new \DateTimeImmutable('now'))->modify($expected)->getTimestamp()),
+            self::lessThanOrEqual($datetime->getTimestamp()),
             $message,
         );
     }
