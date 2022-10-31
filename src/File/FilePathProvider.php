@@ -16,11 +16,17 @@ use Flexic\DataProvider\AbstractProvider;
 
 final class FilePathProvider extends AbstractProvider
 {
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function arbitrary(): \Generator
     {
         yield from self::provideDataForValues(self::values());
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function linux(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -28,6 +34,9 @@ final class FilePathProvider extends AbstractProvider
         });
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function unix(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -35,6 +44,9 @@ final class FilePathProvider extends AbstractProvider
         });
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function mac(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
@@ -42,6 +54,9 @@ final class FilePathProvider extends AbstractProvider
         });
     }
 
+    /**
+     * @return \Generator<string, array{0: string}>
+     */
     public static function windows(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {

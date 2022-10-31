@@ -14,6 +14,7 @@ namespace Flexic\DataProvider\Test\Id;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
 use Flexic\DataProvider\Test\TestUtil;
+use PHPUnit\Framework\Constraint\IsIdentical;
 
 /**
  * @internal
@@ -22,6 +23,21 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class CuidProviderTest extends AbstractTestCase
 {
+    public function testArbitrary(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\Id\CuidProvider::arbitrary());
+
+        self::assertThat(
+            \mb_strlen($value),
+            self::logicalOr(
+                new IsIdentical(8),
+                new IsIdentical(25),
+            ),
+        );
+        self::assertStringContainsOnly('/[0-9a-z]/i', $value);
+        self::assertMatchesRegularExpression('/^[0-9a-z]{8,25}$/i', $value);
+    }
+
     public function testShortCuid(): void
     {
         $value = TestUtil::string(\Flexic\DataProvider\Id\CuidProvider::short());

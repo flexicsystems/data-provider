@@ -22,26 +22,76 @@ use Flexic\DataProvider\Test\TestUtil;
  */
 final class CountryProviderTest extends AbstractTestCase
 {
-    public function testCountry(): void
+    public function testArbitrary(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::country());
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::arbitrary());
 
-        self::assertGreaterThan(0, $value);
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
-    public function testCountryCodeAlpha2(): void
+    public function testAfrica(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::countryCodeAlpha2());
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::africa());
 
-        self::assertLength(2, $value);
-        self::assertMatchesRegularExpression('/^[A-Z]{2}$/', $value);
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
     }
 
-    public function testCountryCodeAlpha3(): void
+    public function testAsia(): void
     {
-        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::countryCodeAlpha3());
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::asia());
 
-        self::assertLength(3, $value);
-        self::assertMatchesRegularExpression('/^[A-Z]{3}$/', $value);
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+    }
+
+    public function testEurope(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::europe());
+
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+    }
+
+    public function testAmerica(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::america());
+
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+    }
+
+    public function testOceania(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::oceania());
+
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+    }
+
+    public function testAntarctica(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::antarctica());
+
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+    }
+
+    public function testAustralia(): void
+    {
+        $value = TestUtil::string(\Flexic\DataProvider\International\CountryProvider::australia());
+
+        self::assertNotEmpty($value);
+        self::assertIsString($value);
+        self::assertGreaterThan(1, \mb_strlen($value));
+        self::assertSame('Australia', $value);
     }
 }
