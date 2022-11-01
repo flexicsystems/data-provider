@@ -17,7 +17,7 @@ use Flexic\DataProvider\AbstractProvider;
 final class FirstNameProvider extends AbstractProvider
 {
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function arbitrary(): \Generator
     {
@@ -25,7 +25,7 @@ final class FirstNameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function male(): \Generator
     {
@@ -35,7 +35,7 @@ final class FirstNameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function female(): \Generator
     {

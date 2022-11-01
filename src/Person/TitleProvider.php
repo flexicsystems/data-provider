@@ -17,7 +17,7 @@ use Flexic\DataProvider\AbstractProvider;
 final class TitleProvider extends AbstractProvider
 {
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function arbitrary(): \Generator
     {
@@ -25,7 +25,7 @@ final class TitleProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function female(): \Generator
     {
@@ -35,7 +35,7 @@ final class TitleProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function male(): \Generator
     {
@@ -45,7 +45,7 @@ final class TitleProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function nonBinary(): \Generator
     {
@@ -55,7 +55,7 @@ final class TitleProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function honor(): \Generator
     {

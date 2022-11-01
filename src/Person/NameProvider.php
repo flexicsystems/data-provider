@@ -17,7 +17,7 @@ use Flexic\DataProvider\AbstractProvider;
 final class NameProvider extends AbstractProvider
 {
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function arbitrary(): \Generator
     {
@@ -25,7 +25,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function arbitrarySingle(): \Generator
     {
@@ -35,7 +35,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function arbitraryDouble(): \Generator
     {
@@ -45,7 +45,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function male(): \Generator
     {
@@ -55,7 +55,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function female(): \Generator
     {
@@ -65,7 +65,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function maleDouble(): \Generator
     {
@@ -75,7 +75,7 @@ final class NameProvider extends AbstractProvider
     }
 
     /**
-     * @return \Generator<string, array{0: array}>
+     * @return \Generator<string, array{0: string}>
      */
     public static function femaleDouble(): \Generator
     {
