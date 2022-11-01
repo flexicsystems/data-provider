@@ -1,5 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Test\Id;
 
 use Flexic\DataProvider\Test\AbstractTestCase;
@@ -11,7 +21,7 @@ use PHPUnit\Framework\Constraint\IsIdentical;
  *
  * @covers \Flexic\DataProvider\Id\NanoIdProvider
  */
-class NanoIdProviderTest extends AbstractTestCase
+final class NanoIdProviderTest extends AbstractTestCase
 {
     public function testArbitrary(): void
     {
@@ -26,7 +36,7 @@ class NanoIdProviderTest extends AbstractTestCase
                 new IsIdentical(10),
                 new IsIdentical(21),
                 new IsIdentical(42),
-            )
+            ),
         );
     }
 
