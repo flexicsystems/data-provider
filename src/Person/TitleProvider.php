@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Person;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class TitleProvider extends AbstractProvider
+final class TitleProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: array}>
@@ -20,7 +30,7 @@ class TitleProvider extends AbstractProvider
     public static function female(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return \substr($key, -1, 9) === 'title-mrs' || \substr($key, -1, 8) === 'title-ms' || \substr($key, -1, 10) === 'title-miss';
+            return \mb_substr($key, -1, 9) === 'title-mrs' || \mb_substr($key, -1, 8) === 'title-ms' || \mb_substr($key, -1, 10) === 'title-miss';
         });
     }
 
@@ -30,7 +40,7 @@ class TitleProvider extends AbstractProvider
     public static function male(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return \strpos($key, 'title-mr') === 0;
+            return \str_starts_with($key, 'title-mr');
         });
     }
 
@@ -40,7 +50,7 @@ class TitleProvider extends AbstractProvider
     public static function nonBinary(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return \strpos($key, 'title-mx') === 0;
+            return \str_starts_with($key, 'title-mx');
         });
     }
 
@@ -50,7 +60,7 @@ class TitleProvider extends AbstractProvider
     public static function honor(): \Generator
     {
         yield from self::provideDataForValuesWhereKey(self::values(), static function (string $key): bool {
-            return \substr($key, -1, 2) === 'dr' || \substr($key, -1, 4) === 'prod';
+            return \mb_substr($key, -1, 2) === 'dr' || \mb_substr($key, -1, 4) === 'prod';
         });
     }
 

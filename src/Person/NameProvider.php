@@ -1,10 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Copyright (c) 2022-2022 Flexic-Systems
+ *
+ * @author Hendrik Legge <hendrik.legge@themepoint.de>
+ *
+ * @version 1.0.0
+ */
+
 namespace Flexic\DataProvider\Person;
 
 use Flexic\DataProvider\AbstractProvider;
 
-class NameProvider extends AbstractProvider
+final class NameProvider extends AbstractProvider
 {
     /**
      * @return \Generator<string, array{0: array}>
@@ -82,24 +92,24 @@ class NameProvider extends AbstractProvider
             'name-male' => \sprintf(
                 '%s%s',
                 $faker->firstNameMale(),
-                $faker->lastName()
+                $faker->lastName(),
             ),
             'name-female' => \sprintf(
                 '%s %s',
                 $faker->firstNameFemale(),
-                $faker->lastName()
+                $faker->lastName(),
             ),
             'name-male-double' => \sprintf(
                 '%s %s %s',
                 $faker->firstNameMale(),
                 $faker->firstNameMale(),
-                $faker->lastName()
+                $faker->lastName(),
             ),
             'name-female-double' => \sprintf(
                 '%s %s %s',
                 $faker->firstNameFemale(),
                 $faker->firstNameFemale(),
-                $faker->lastName()
+                $faker->lastName(),
             ),
         ];
     }
