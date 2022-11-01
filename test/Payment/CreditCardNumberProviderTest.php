@@ -114,7 +114,7 @@ final class CreditCardNumberProviderTest extends AbstractTestCase
             $value,
             self::logicalOr(
                 self::stringStartsWith('3528'),
-                self::stringStartsWith('3528'),
+                self::stringStartsWith('3589'),
             ),
         );
     }

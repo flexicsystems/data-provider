@@ -84,7 +84,7 @@ final class ExtensionProviderTest extends AbstractTestCase
 
         self::assertGreaterThan(0, \mb_strlen($value));
         self::assertLessThanOrEqual(10, \mb_strlen($value));
-        self::assertMatchesRegularExpression('/^[a-zz0-9]{1,10}$/', $value);
+        self::assertMatchesRegularExpression('/^[a-zz0-9.]{1,10}$/', $value);
         self::assertIsString($value);
         self::assertStringStartsNotWith('.', $value);
     }

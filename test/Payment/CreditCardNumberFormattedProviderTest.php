@@ -119,7 +119,7 @@ final class CreditCardNumberFormattedProviderTest extends AbstractTestCase
             $value,
             self::logicalOr(
                 self::stringStartsWith('3528'),
-                self::stringStartsWith('3528'),
+                self::stringStartsWith('3589'),
             ),
         );
         self::assertMatchesRegularExpression('/([0-9]+([-])?){4}/', $value);
