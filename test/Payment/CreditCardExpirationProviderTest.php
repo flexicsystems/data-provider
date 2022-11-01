@@ -40,7 +40,6 @@ final class CreditCardExpirationProviderTest extends AbstractTestCase
         $parts = \explode('/', $value);
         $actual = new \DateTimeImmutable('now');
 
-        self::assertGreaterThanOrEqual((int) $actual->format('m'), (int) $parts[0]);
         self::assertGreaterThanOrEqual((int) $actual->format('y'), (int) $parts[1]);
     }
 
@@ -54,7 +53,6 @@ final class CreditCardExpirationProviderTest extends AbstractTestCase
         $parts = \explode('/', $value);
         $actual = new \DateTimeImmutable('now');
 
-        self::assertLessThan((int) $actual->format('m'), (int) $parts[0]);
         self::assertLessThan((int) $actual->format('y'), (int) $parts[1]);
     }
 }
